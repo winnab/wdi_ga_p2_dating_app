@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   :password, :password_confirmation, :remember_me, :confirmed_at
   # attr_accessible :title, :body
 
+  has_many :qualities
+
   # foreign_key only seaches only column
   # has_many :messages, :foreign_key => 'sender_id'
 
