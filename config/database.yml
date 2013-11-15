@@ -16,7 +16,6 @@ development:
   adapter: postgresql
   encoding: unicode
   database: wdi_ga_p2_dating_app_development
-  username: wdi_ga_p2_dating_app
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -40,7 +39,6 @@ test:
   adapter: postgresql
   encoding: unicode
   database: wdi_ga_p2_dating_app_test
-  username: wdi_ga_p2_dating_app
 
 production:
   adapter: postgresql
