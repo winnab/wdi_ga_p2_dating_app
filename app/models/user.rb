@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   # EVENTS
   # event_type: view | star | poke | flag
-  def get_users_starred_by_user
+  def get_starred_users
     starred_ids = Event.where("user_id = ? AND event_type = 'star'", self.id).pluck(:target_user_id)
     User.find_all_by_id(starred_ids)
   end
