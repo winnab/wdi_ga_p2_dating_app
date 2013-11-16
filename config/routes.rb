@@ -1,9 +1,12 @@
 WdiGaP2DatingApp::Application.routes.draw do
   devise_for :users
+  devise_for :users, :controllers => { :registrations => 'users' }
+  
 
+  
   root :to => "home#index" # req for devise config
 
-  devise_for :users, :controllers => { :registrations => 'users' }
+  
 
   resources :messages, only: [:create, :destroy]
 
