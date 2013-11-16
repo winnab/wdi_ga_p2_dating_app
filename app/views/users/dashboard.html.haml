@@ -1,5 +1,6 @@
 .container.col-md-12
 
+  #main_header
   %h1 Dashboard
 
   #div_header
@@ -12,11 +13,12 @@
         Poked by {name}
 
       #div_3
-        Messages from
-        %p {name}
-        %p {name}
-        %p {name}
-        %p {name}
+        Messages from:
+        #msg_names
+          %p {name}
+          %p {name}
+          %p {name}
+          %p {name}
 
   #div.row2.col-md-4
     #links
