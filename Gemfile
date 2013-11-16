@@ -14,6 +14,7 @@ gem 'fog'
 gem 'haml-rails'
 
 gem 'will_paginate', '~> 3.0'
+gem "erb2haml", :group => :development
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -28,6 +29,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :development do
+  gem 'haml-rails'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
