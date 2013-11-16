@@ -27,3 +27,10 @@ message3 = Message.create(sender_id: user2.id, recipient_id: user3.id, content: 
 
 # user2.all_messages.length == 3 # TRUE
 # user2.messages_with_user(user1.id).length == 2   # TRUE
+
+# Event tests
+
+# Bob stars Alice
+event = Event.create(user_id: user1.id, target_user_id: user2.id, event_type: 'star', created_at: DateTime.now)
+# Alice pokes Bob
+event2 = Event.create(user_id: user2.id, target_user_id: user1.id, event_type: 'poke', created_at: DateTime.now)

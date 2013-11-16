@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20131115165822) do
   create_table "events", :force => true do |t|
     t.integer  "user_id"
     t.integer  "target_user_id"
-    t.string   "type"
+    t.string   "event_type"
     t.datetime "created_at"
   end
 
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20131115165822) do
   create_table "qualities", :force => true do |t|
     t.integer  "user_id"
     t.string   "scope"
-    t.string   "type"
+    t.string   "quality_type"
     t.string   "value"
     t.datetime "created_at"
   end
