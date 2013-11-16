@@ -1,0 +1,13 @@
+.message-unit {
+  padding:10px;
+  background:#e1e1e1;
+  margin:0 0 20px 0;
+}
+
+.message-body {
+  font-size:18px;
+}
+
+.message-from {
+  font-style:italic;
+}
