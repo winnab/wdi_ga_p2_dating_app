@@ -1,29 +1,50 @@
-!!!
+.container.col-md-12
 
-%head
-  %h1 My Dashboard
+  %h1 Dashboard
 
-/ %title href=""
+  #div_header
+    #header
+    %h3 Newsfeed
 
-%body
-  %div#div_1
-  %h3 Newsfeed
+  #div.row.col-md-8
+    #div.newsfeed
+      #div_2
+        Poked by {name}
 
+      #div_3
+        Messages from
+        %p {name}
+        %p {name}
+        %p {name}
+        %p {name}
 
-  %div#div_2
-    Poked by {name}
+  #div.row2.col-md-4
+    #links
+      #div_r1
+        %p Link_to "Update Profile", edit_user_path
+        %br
 
-  %div#div_3
-    Message from
-    %p {name}
-    %p {name}
-    %p {name}
-    %p {name}
+      #div_r2
+        %p Link_to "Looking for" criteria, looking_for_path
+        %br
 
-  %div#div_4
+      #div_r3
+        %p Link_to "Inbox", inbox_path
+        %br
 
+      #div_r4
+        %p Link_to "My Account", account_path
+        %br
 
-  %div#div_4
+      #div_r5
+        %p Starred List (value on page),
+        %br
 
+      #div_r6
+        %p Stars (value on page),
+        %br
 
-  %div#div_4
+      #div_r7
+        %p Number of times Profile viewed,
+        %br
+

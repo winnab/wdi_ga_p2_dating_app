@@ -1,0 +1,28 @@
+/* DASHBOARD */
+h1 {
+  margin: 10px;
+}
+
+#header {
+  background-color: pink;
+}
+
+#div.newsfeed {
+  margin: 10px;
+}
+
+#links {
+  margin: 10px;
+}
+
+#div.row {
+  /*background-color: blue;*/
+  color: red;
+}
+
+#div.row2 {
+  /*background-color: grey;*/
+  border-left: 3px solid black;
+}
+
+#div.
