@@ -9,17 +9,25 @@ class MessagesController < ApplicationController
     @message_thread  = current_user.messages_with_user params[:id]
     @new_message     = current_user.messages_sent.new(recipient_id: @other_user.id)
 
-    render :layout => false
+    render :partial => 'conversation'
   end
 
   def create
-    Message.create params[:message]
-    redirect_to inbox_url
+    message = Message.create params[:message]
+    if request.xhr?
+      render :partial => 'message', locals: {:message => message}
+    else
+     redirect_to inbox_url
+    end
   end
 
   def destroy
     Message.find(params[:id]).destroy
-    redirect_to inbox_url
+    if request.xhr?
+      head :ok
+    else
+      redirect_to inbox_url
+    end
   end
 
 end
