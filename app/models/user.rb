@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   def messages_with_user other_user_id
     sent     = self.messages_sent.where("recipient_id = ?", other_user_id)
     received = self.messages_received.where("sender_id = ?", other_user_id)
-    [sent, received].flatten # need to reorder these interweave sent/recd messages in natural sequence
+    [sent, received].flatten.sort_by(&:created_at)
   end
 
   def contact_list
