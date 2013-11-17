@@ -31,8 +31,8 @@ end
 gem 'jquery-rails'
 
 group :development do
-  gem 'haml-rails'
   gem 'better_errors'
+  gem 'pry-rails'
 end
 
 # To use ActiveModel has_secure_password
