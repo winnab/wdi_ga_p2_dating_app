@@ -9,4 +9,17 @@
     %p.notice= notice
     %p.alert= alert
     .container.col-md-12
+      .user-nav
+        - if user_signed_in?
+          Logged in as
+          %b= current_user.email
+          = link_to 'Edit Profile', edit_user_registration_path
+          \|
+          = link_to 'Sign Out',  destroy_user_session_path, method: :delete
+        - else
+          = link_to 'Sign up', new_user_registration_path
+          \|
+          = link_to 'Log In', new_user_session_path
+      %p.notice= notice
+      %p.alert= alert
       = yield
