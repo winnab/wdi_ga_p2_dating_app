@@ -38,3 +38,26 @@
 #msg_names {
   margin-top: 15px;
 }
+
+#home_header {
+  margin: 50px;
+}
+
+#home_form {
+  text-align: center;
+  margin-top: 150px;
+  border: solid black thin;
+  border-width: 10px;
+  /*width: 400px;*/
+}
+
+.fieldset {
+  border: none;
+  margin: 0 0 0 -10px;
+  padding: 20px;
+}
+
+
+
+
+

@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :username, :plan, 
-  :age, :gender, :location, :tagline, :bio, :email, 
+  attr_accessible :first_name, :last_name, :username, :plan,
+  :age, :gender, :location, :tagline, :bio, :email,
   :password, :password_confirmation, :remember_me, :confirmed_at
   # attr_accessible :title, :body
 
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   def all_messages
     sent     = Message.where("sender_id = ?", self.id)
     received = Message.where("recipient_id = ?", self.id)
-    [sent, received].flatten 
+    [sent, received].flatten
   end
 
   def messages_with_user other_user_id
