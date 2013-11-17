@@ -4,7 +4,7 @@
     .message-body
       = simple_format message.content
     .message-from
-      = message.sender_id == @current_user.id ? @current_user.username : @other_user.username
+      = message.sender_id == current_user.id ? current_user.username : @other_user.username
       |
       = message.created_at
     = link_to 'Delete', message_path(message), method: 'delete'
