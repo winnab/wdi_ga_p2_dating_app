@@ -25,42 +25,30 @@
       
 
   .row2.col-md-4
-    #links
+    .dash-unit
+      %h4
+        Stars
+        = "(#{@starred_list.count})" if @starred_list.present?
+      %p Potential matches you've starred:
+      - if @starred_list.present?
+        %ul
+          - @starred_list.each do | star |
+            %li= link_to star.username, user_path(star)
+      - else
+        %p Any potential matches your star will appear here.
+
+    - if @views_summary.present?
       .dash-unit
-        %h4
-          Stars
-          = "(#{@starred_list.count})" if @starred_list.present?
-        %p Potential matches you've starred:
-        - if @starred_list.present?
-          %ul
-            - @starred_list.each do | star |
-              %li= link_to star.username, user_path(star)
-        - else
-          %p Any potential matches your star will appear here.
-
-      - if @views_summary.present?
-        .dash-unit
-          %h4 Profile views
-          %p In the past 7 days:
-          %ul
-            - ((Date.today - 6).to_date..Date.today.to_date).to_a.reverse_each do |date|
-              %li
-                = date == Date.today ? "Today" : date.strftime("%A")
-                = ": #{@views_summary[date.to_s] || 0} views"
-
-
-      .dash-unit
-        %p Link_to "Update Profile", edit_user_path
-        %br
-
-      .dash-unit
-        %p Link_to "Looking for" criteria, looking_for_path
-        %br
-
-      .dash-unit
-        %p Link_to "Inbox", inbox_path
-        %br
-
-      .dash-unit
-        %p Link_to "My Account", account_path
-        %br
+        %h4 Profile views
+        %p In the past 7 days:
+        %ul
+          - ((Date.today - 6).to_date..Date.today.to_date).to_a.reverse_each do |date|
+            %li
+              = date == Date.today ? "Today" : date.strftime("%A")
+              = ": #{@views_summary[date.to_s] || 0} views"
+    .dash-unit
+      %h4 Settings
+      %ul
+        %li= link_to "My Account", account_path
+        %li= link_to "Update Profile", edit_user_registration_path
+        %li= link_to "Update looking for", '/'

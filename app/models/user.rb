@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
     Event.views.count(:conditions => ["target_user_id = ? AND created_at > ?", self.id, DateTime.now - days_back.days], :group => "DATE(created_at)", :order => "DATE(created_at) DESC")
   end
 
+  def users_who_viewed_profile
+    User.joins(:event_creator).where("events.target_user_id = ? and events.event_type = 'view'", 1).select("users.id, users.username").uniq
+  end
+
   # DASHBOARD
   def news_items
     [self.messages_received, self.pokes_received].flatten.sort_by(&:created_at)
