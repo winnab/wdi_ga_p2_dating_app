@@ -1,8 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
-  # def new
-  #   super
-  # end
+  def new
+    super
+    puts "hi there"
+  end
 
   # def create
   #   super
