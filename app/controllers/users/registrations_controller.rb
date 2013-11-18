@@ -1,5 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
+
+
   def new
     super
     puts "hi there"
@@ -11,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # def edit
   #   super
-  # end 
+  # end
 
   # def update
   #   super

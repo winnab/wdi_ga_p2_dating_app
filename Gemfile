@@ -11,7 +11,7 @@ gem 'devise'
 gem 'cancan'
 
 gem 'carrierwave'
-gem 'fog'
+gem 'fog' "~> 1.3.1"
 
 gem 'haml-rails'
 

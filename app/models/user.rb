@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   :password, :password_confirmation, :remember_me, :confirmed_at
   # attr_accessible :title, :body
 
+  #CARRIERWAVE
+
+  mount_uploader :avatar, AvatarUploader
+
   has_many  :qualities
   has_many :event_creator, :class_name => 'Event', :foreign_key => 'user_id'
   has_many :event_target, :class_name => 'Event', :foreign_key => 'target_user_id'
