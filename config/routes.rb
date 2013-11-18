@@ -1,5 +1,5 @@
 WdiGaP2DatingApp::Application.routes.draw do
-  devise_for :users, :controllers => { :registrations => 'users' }
+  devise_for :users, :controllers => { :registrations => 'registrations' }
  # careful! call devise_for once only and do it before resource users!
 
   resources :users do

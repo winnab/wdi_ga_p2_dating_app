@@ -1,4 +1,4 @@
-class UsersController < Devise::RegistrationsController
+class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def blah
@@ -7,4 +7,7 @@ class UsersController < Devise::RegistrationsController
   def dashboard
   end
 
+  def index
+  end
+  
 end

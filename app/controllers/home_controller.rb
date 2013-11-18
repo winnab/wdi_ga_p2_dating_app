@@ -1,7 +1,12 @@
 class HomeController < ApplicationController
   
   def index
-    @user = User.new
+    if current_user
+      redirect_to dashboard_url
+    else
+      @user = User.new
+    end
+
   end
 
 end
