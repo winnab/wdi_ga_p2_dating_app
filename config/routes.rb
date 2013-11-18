@@ -1,20 +1,19 @@
 WdiGaP2DatingApp::Application.routes.draw do
-  
   devise_for :users, :controllers => { :registrations => 'users' }
-  devise_for :users
+ # careful! call devise_for once only and do it before resource users!
 
-  root :to => "home#index" # req for devise config
-
-  resources :messages, only: [:create, :destroy]
-
-  resources :user do
+  resources :users do
     member do
-      get   'star',   :to => "user#star"
+      get   'star',     :to => "user#star"
       get   'unstar',   :to => "user#unstar"
       #flag/unflag
       #poke
     end
   end
+
+  root :to => "home#index" # req for devise config
+
+  resources :messages, only: [:create, :destroy]
 
   get   'conversation/:id',   :to => "messages#conversation",  :as => "conversation"
   get   'dashboard',          :to => "users#dashboard"
