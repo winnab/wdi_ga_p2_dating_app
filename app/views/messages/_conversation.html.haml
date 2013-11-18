@@ -1,0 +1,12 @@
+%h3 Messages with #{@other_user.username}
+#message-thread
+  - @message_thread.each do |message|
+    = render message, :locals => {:message => message}
+
+#message-compose
+  = form_for @new_message do |f|
+    = f.hidden_field :recipient_id
+    = f.hidden_field :sender_id
+    .form-group
+      = f.text_area :content, {:class => 'form-control', :rows => 5}
+    = f.submit 'Reply', {:class => 'btn btn-primary', :id => "send-message"}

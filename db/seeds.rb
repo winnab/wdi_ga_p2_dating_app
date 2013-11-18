@@ -9,9 +9,9 @@
 User.destroy_all
 Message.destroy_all
 
-user1 = User.create(first_name: "Bob", last_name:"Tester", email: "bob@bob.com", password: "bob12345", confirmed_at: DateTime.now)
-user2 = User.create(first_name: "Alice", last_name:"Tester", email: "alice@alice.com", password: "alice12345", confirmed_at: DateTime.now)
-user3 = User.create(first_name: "Kate", last_name:"Tester", email: "kate@kate.com", password: "kate12345", confirmed_at: DateTime.now)
+user1 = User.create(first_name: "Bob", last_name:"Tester", username: "Bobbob", email: "bob@bob.com", password: "bob12345", confirmed_at: DateTime.now)
+user2 = User.create(first_name: "Alice", last_name:"Tester", username: "Alice1986", email: "alice@alice.com", password: "alice12345", confirmed_at: DateTime.now)
+user3 = User.create(first_name: "Kate", last_name:"Tester", username:"CrazyKate", email: "kate@kate.com", password: "kate12345", confirmed_at: DateTime.now)
 
 # Bob messages Alice
 message1 = Message.create(sender_id: user1.id, recipient_id: user2.id, content: "Hello Alice, from Bob")

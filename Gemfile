@@ -8,13 +8,14 @@ gem 'rails', '3.2.14'
 gem 'pg'
 
 gem 'devise'
+gem 'cancan'
+
 gem 'carrierwave'
 gem 'fog'
 
 gem 'haml-rails'
 
 gem 'will_paginate', '~> 3.0'
-gem "erb2haml", :group => :development
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,8 +32,9 @@ end
 gem 'jquery-rails'
 
 group :development do
-  gem 'haml-rails'
   gem 'better_errors'
+  gem 'pry-rails'
+  gem "erb2haml"
 end
 
 # To use ActiveModel has_secure_password

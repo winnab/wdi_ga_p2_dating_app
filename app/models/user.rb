@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :username, :plan, 
-  :age, :gender, :location, :tagline, :bio, :email, 
+  attr_accessible :first_name, :last_name, :username, :plan,
+  :age, :gender, :location, :tagline, :bio, :email,
   :password, :password_confirmation, :remember_me, :confirmed_at
   # attr_accessible :title, :body
 
@@ -15,18 +15,29 @@ class User < ActiveRecord::Base
   has_many :event_target, :class_name => 'Event', :foreign_key => 'target_user_id'
 
   # MESSAGES
-    # foreign_key only seaches only column
-    # has_many :messages, :foreign_key => 'sender_id'
+  has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id'
+  has_many :messages_received, :class_name => 'Message', :foreign_key => 'recipient_id'
+
   def all_messages
-    sent     = Message.where("sender_id = ?", self.id)
-    received = Message.where("recipient_id = ?", self.id)
-    [sent, received].flatten 
+    [self.messages_sent, self.messages_received].flatten
   end
 
   def messages_with_user other_user_id
-    sent     = Message.where("sender_id = ? AND recipient_id = ?", self.id, other_user_id)
-    received = Message.where("recipient_id = ? AND sender_id = ?", self.id, other_user_id)
-    [sent, received].flatten # need to reorder these interweave sent/recd messages in natural sequence
+    sent     = self.messages_sent.where("recipient_id = ?", other_user_id)
+    received = self.messages_received.where("sender_id = ?", other_user_id)
+    [sent, received].flatten.sort_by(&:created_at)
+  end
+
+  def contact_list
+    User.find_all_by_id [users_contacted, users_contacted_by]
+  end
+
+  def users_contacted
+    self.messages_sent.pluck(:recipient_id)   # Returns ids of users has user has sent messages to
+  end
+
+  def users_contacted_by
+    self.messages_received.pluck(:sender_id)  # Returns ids of users who've messaged this user
   end
 
   # EVENTS

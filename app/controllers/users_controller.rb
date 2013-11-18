@@ -1,12 +1,34 @@
-class UsersController < Devise::RegistrationsController
-  
+class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  
-  # user_signed_in? => devise helper
-  # user_session => devise helper
 
   def blah
   end
 
+  def dashboard
+  end
 
+  def index
+  end
+
+  def do_search
+  end
+
+  def new_search
+  end
+
+  def star
+  end
+
+  def unstar
+  end
+
+  def poke
+  end
+
+  def flag
+  end
+
+  def unflag
+  end
+  
 end
