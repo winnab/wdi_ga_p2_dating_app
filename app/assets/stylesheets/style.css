@@ -57,6 +57,17 @@
   padding: 20px;
 }
 
+.required::after{
+  content: " *";
+}
+
+.clear-emphasis{
+  font-weight: normal;
+}
+
+.password-hint::after{
+  content: " * note: minimum 4 characters";
+}
 
 
 
