@@ -1,45 +1,92 @@
-.col-md-4
-  .panel.panel-default
-    .panel-heading
-      %h3 Sign Up
-    .panel-body
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        %form{role: "form"}
-          .form-group
-            = f.label :first_name, class: "required"
-            = f.text_field :first_name, placeholder: "First Name", :autofocus => true, class: "form-control"
-          .form-group
-            = f.label :last_name, class: "required"
-            = f.text_field :last_name, placeholder: "Last Name", class: "form-control"
-          .form-group
-            = f.label :username, class: "required"
-            = f.text_field :username, placeholder: "Username", class: "form-control"
-          .form-group
-            = f.label :email, class: "required"
-            = f.email_field :email, placeholder: "Email Address", class: "form-control"
-          .form-group
-            = f.label :password, class: "password-hint"
-            = f.password_field :password, placeholder: "Password", class: "form-control"
-          .form-group
-            = f.label :password_confirmation, class: "required"
-            = f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control"
-          .form-group
-            = f.label :avatar, "Upload a photo", class: "required"
-            = f.file_field :avatar            
-          .form-group
-            = f.label :gender, class: "clear-emphasis"
-            %br/
-            = select(:user, :gender, [['Male'], ['Female']])
-          .form-group
-            = f.label :age, class: "clear-emphasis"
-            %br/
-            = f.number_field :age, placeholder: "Age", class: "form-control"
-          .form-group
-            = f.label :location, class: "clear-emphasis"
-            %br/
-            = f.text_field :location, placeholder: "Location", class: "form-control"
-          = f.submit "Sign Up", class: "btn btn-default"
-          %br/
-          %br/
-          = render "devise/shared/links"
+.row
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        %h2.panel-title Step 1: Account Information
+      .panel-body
+        %p All fields are required.
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          %form{role: "form"}
+            .fieldset
+              .form-group
+                = f.label :username, class: "required"
+                = f.text_field :username, placeholder: "Username", class: "form-control"
+              .form-group
+                = f.label :email, class: "required"
+                = f.email_field :email, placeholder: "Email Address", class: "form-control"
+              .form-group
+                = f.label :password, class: "password-hint"
+                = f.password_field :password, placeholder: "Password", class: "form-control"
+              .form-group
+                = f.label :password_confirmation, class: "required"
+                = f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control"
+              .form-group
+                = f.label :first_name, class: "required"
+                = f.text_field :first_name, placeholder: "First Name", class: "form-control", :autofocus => true
+              .form-group
+                = f.label :last_name, class: "required"
+                = f.text_field :last_name, placeholder: "Last Name", class: "form-control"
+              .form-group
+                = f.label :plan, class: "required"
+                = f.text_field :plan, placeholder: "Plan", class: "form-control"
+              .form-group
+                = f.label :avatar, "Upload a photo", class: "required"
+                = f.file_field :avatar  
+              .form-group
+                = f.submit "Sign Up", class: "btn btn-default form-control"
+
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        %h2.panel-title Step 2: Profile Details
+      .panel-body
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          %form{role: "form"}
+            .fieldset          
+              .form-group
+                = f.label :gender, class: "clear-emphasis"
+                %br/
+                = select(:user, :gender, [['Female'], ['Male'], ['Rather Not Say']])
+              .form-group
+                = f.label :age, class: "clear-emphasis"
+                %br/
+                = f.number_field :age, placeholder: "Age", class: "form-control"
+              .form-group
+                = f.label :location, class: "clear-emphasis"
+                %br/
+                = f.text_field :location, placeholder: "Location", class: "form-control"
+              .form-group
+                = f.label :bio, "About me:", class: "clear-emphasis"
+                %br/
+                = f.text_area :bio, placeholder: "Tell us a bit about yourself...", class: "form-control", rows: 5
+              .form-group
+                = f.submit "Save My Profile", class: "btn btn-default form-control"
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        %h2.panel-title Step 3: I'm looking for...
+      .panel-body
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          %form{role: "form"}
+            .fieldset          
+              .form-group
+                = f.label :gender, class: "clear-emphasis"
+                %br/
+                = select(:user, :gender, [['Female'], ['Male'], ['Male or Female']])
+              .form-group
+                = f.label :age, class: "clear-emphasis"
+                %br/
+                = f.number_field :age, placeholder: "Age", class: "form-control"
+              .form-group
+                = f.label :location, class: "clear-emphasis"
+                %br/
+                = f.text_field :location, placeholder: "Location", class: "form-control"
+              .form-group
+                = f.label :bio, "I'm looking for:", class: "clear-emphasis"
+                %br/
+                = f.text_area :bio, placeholder: "My ideal ideal match...", class: "form-control", rows: 5
+              .form-group
+                = f.submit "Save My Preferences", class: "btn btn-default form-control"                
