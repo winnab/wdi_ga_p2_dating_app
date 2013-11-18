@@ -7,11 +7,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :username, :plan,
   :age, :gender, :location, :tagline, :bio, :email,
-  :password, :password_confirmation, :remember_me, :confirmed_at
+  :password, :password_confirmation, :remember_me, :confirmed_at, :avatar
   # attr_accessible :title, :body
 
   #CARRIERWAVE
-
   mount_uploader :avatar, AvatarUploader
 
   has_many  :qualities
