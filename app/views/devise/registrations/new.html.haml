@@ -1,29 +1,47 @@
 %h2 Sign up
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
-  %div
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name, :autofocus => true
-  %div
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
-  %div
-    = f.label :username
-    %br/
-    = f.text_field :username
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %div
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %div= f.submit "Sign up"
-= render "devise/shared/links"
+  .form
+    .form-group
+      = f.label :first_name
+      %br/
+      = f.text_field :first_name, :autofocus => true
+    .form-group
+      = f.label :last_name
+      %br/
+      = f.text_field :last_name
+    .form-group
+      = f.label :username
+      %br/
+      = f.text_field :username
+    .form-group
+      = f.label :email
+      %br/
+      = f.email_field :email
+    .form-group
+      = f.label :password
+      %br/
+      = f.password_field :password
+    .form-group
+      = f.label :password_confirmation
+      %br/
+      = f.password_field :password_confirmation
+      %br/
+    .form-group
+      = f.label :gender
+      %br/
+      = select(:user, :gender, [['Male'], ['Female']])
+      %br/
+    .form-group
+      = f.label :age
+      %br/
+      = f.number_field :age
+      %br/
+    .form-group
+      = f.label :location
+      %br/
+      = f.text_field :location
+
+
+    .btn= f.submit "Sign up"
+    = render "devise/shared/links"
