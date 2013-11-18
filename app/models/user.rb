@@ -48,6 +48,11 @@ class User < ActiveRecord::Base
   end
 
   def pokes_received
-    User.joins(:event_creator).where("events.target_user_id = ? and events.event_type = 'poke'", self.id).select("users.id, users.first_name, users.last_name, event_type, events.created_at")
+    User.joins(:event_creator).where("events.target_user_id = ? and events.event_type = 'poke'", self.id).select("users.id, users.username, event_type, events.created_at")
+  end
+
+  # DASHBOARD
+  def news_items
+    [self.messages_received, self.pokes_received].flatten.sort_by(&:created_at)
   end
 end

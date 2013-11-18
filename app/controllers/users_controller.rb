@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @news_items = current_user.news_items
+    @starred_list = current_user.get_starred_users
   end
 
   def index
