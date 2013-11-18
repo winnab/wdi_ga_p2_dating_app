@@ -26,7 +26,7 @@
 
   .row2.col-md-4
     #links
-      .div_r5
+      .dash-unit
         %h4
           Stars
           = "(#{@starred_list.count})" if @starred_list.present?
@@ -38,27 +38,29 @@
         - else
           %p Any potential matches your star will appear here.
 
-      .div_r1
+      - if @views_summary.present?
+        .dash-unit
+          %h4 Profile views
+          %p In the past 7 days:
+          %ul
+            - ((Date.today - 6).to_date..Date.today.to_date).to_a.reverse_each do |date|
+              %li
+                = date == Date.today ? "Today" : date.strftime("%A")
+                = ": #{@views_summary[date.to_s] || 0} views"
+
+
+      .dash-unit
         %p Link_to "Update Profile", edit_user_path
         %br
 
-      .div_r2
+      .dash-unit
         %p Link_to "Looking for" criteria, looking_for_path
         %br
 
-      .div_r3
+      .dash-unit
         %p Link_to "Inbox", inbox_path
         %br
 
-      .div_r4
+      .dash-unit
         %p Link_to "My Account", account_path
         %br
-
-      .div_r6
-        %p Stars (value on page),
-        %br
-
-      .div_r7
-        %p Number of times Profile viewed,
-        %br
-

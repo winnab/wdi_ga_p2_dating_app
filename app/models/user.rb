@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   # EVENTS
   # event_type: view | star | poke | flag
   def get_starred_users
-    starred_ids = Event.where("user_id = ? AND event_type = 'star'", self.id).pluck(:target_user_id)
+    starred_ids = Event.stars.where("user_id = ?", self.id).pluck(:target_user_id)
     User.find_all_by_id(starred_ids)
   end
 
@@ -51,8 +51,17 @@ class User < ActiveRecord::Base
     User.joins(:event_creator).where("events.target_user_id = ? and events.event_type = 'poke'", self.id).select("users.id, users.username, event_type, events.created_at")
   end
 
+  def profile_views days_back=7
+    Event.views.where("target_user_id = ? AND created_at > ?", self.id, DateTime.now - days_back.days)
+  end
+
+  def profile_views_count_by_day days_back=7
+    Event.views.count(:conditions => ["target_user_id = ? AND created_at > ?", self.id, DateTime.now - days_back.days], :group => "DATE(created_at)", :order => "DATE(created_at) DESC")
+  end
+
   # DASHBOARD
   def news_items
     [self.messages_received, self.pokes_received].flatten.sort_by(&:created_at)
   end
+
 end
