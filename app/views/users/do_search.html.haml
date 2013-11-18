@@ -1,0 +1,10 @@
+%h1 Explore
+
+- @users.each do |user|
+  / = link_to user_path(@user.username)
+  = user.username
+  \,
+  = user.age
+  \,
+  = user.location
+  / = user.image
