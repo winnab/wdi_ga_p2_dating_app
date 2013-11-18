@@ -51,7 +51,9 @@ $(function() {
     })
   }
 
-  var auto_load_first_url = $('.inbox-conversation-link').first().attr('href');
-  getConversation(auto_load_first_url);
-
+  if ($('.inbox-conversation-link').length != 0) {
+    var auto_load_first_url = $('.inbox-conversation-link').first().attr('href');
+    getConversation(auto_load_first_url);
+  }
+  
 })
