@@ -1,14 +1,19 @@
 WdiGaP2DatingApp::Application.routes.draw do
-  devise_for :users, :controllers => { :registrations => 'registrations' }
+  devise_for :users, :controllers => { :registrations => 'devise/registrations' }
  # careful! call devise_for once only and do it before resource users!
 
   resources :users do
     member do
       get   'star',     :to => "user#star"
       get   'unstar',   :to => "user#unstar"
-      #flag/unflag
-      #poke
+      get   'flag',     :to => "user#flag"
+      get   'unflag',   :to => "user#unflag"
+      get   'poke',     :to => "user#poke"
     end
+  end
+
+  devise_scope :user do
+    get "sign_up", :to => "devise/registrations#new"
   end
 
   root :to => "home#index" # req for devise config

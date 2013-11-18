@@ -9,5 +9,26 @@ class UsersController < ApplicationController
 
   def index
   end
+
+  def do_search
+  end
+
+  def new_search
+  end
+
+  def star
+  end
+
+  def unstar
+  end
+
+  def poke
+  end
+
+  def flag
+  end
+
+  def unflag
+  end
   
 end
