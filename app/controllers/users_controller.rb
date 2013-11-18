@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show, :do_search]
 
   def blah
   end
@@ -8,9 +8,15 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def do_search
+    @users = User.where("age BETWEEN ? AND ?", params[:start_age], params[:end_age])
   end
 
   def new_search
@@ -30,5 +36,5 @@ class UsersController < ApplicationController
 
   def unflag
   end
-  
+
 end
