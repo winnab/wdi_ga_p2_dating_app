@@ -1,1 +1,31 @@
-Website coming soon...
+.container
+
+  #home_header
+    %h4 Welcome to the greatest Dating Site in the history of mankind!!!
+
+  #home_form
+    = form_tag "/search" do
+
+      .fieldset
+        %b= "I am a:   "
+        / = label_tag "gender"
+        = select_tag("Select Gender", options_for_select([['Male'], ['Female']]))
+
+        %p
+        %b= "Looking for a:   "
+        /   / = f.label :gender
+        = select_tag("Select Gender", options_for_select([['Male'], ['Female']]))
+
+        %p
+        = label_tag "age"
+        = text_field_tag "age"
+        / = select_tag(:age => dropdown", options_for_select[[18..80]])
+
+        %p
+        = label_tag "location"
+        = text_field_tag "location"
+
+
+
+        %p
+        = submit_tag "Give it a go", :class => "btn btn-primary"

@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :username, :plan, 
-  :age, :gender, :location, :tagline, :bio, :email, 
+  attr_accessible :first_name, :last_name, :username, :plan,
+  :age, :gender, :location, :tagline, :bio, :email,
   :password, :password_confirmation, :remember_me, :confirmed_at
   # attr_accessible :title, :body
 
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :messages_received, :class_name => 'Message', :foreign_key => 'recipient_id'
 
   def all_messages
-    [self.messages_sent, self.messages_received].flatten 
+    [self.messages_sent, self.messages_received].flatten
   end
 
   def messages_with_user other_user_id
