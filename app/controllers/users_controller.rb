@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    # Track view if current_user logged in & not viewing own profile
+    Event.create(event_type: :view, user_id: current_user.id, target_user_id: @user.id) if (user_signed_in? && current_user.id != @user.id)
   end
 
   def do_search
