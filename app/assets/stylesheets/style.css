@@ -69,5 +69,32 @@
   content: " * note: minimum 4 characters";
 }
 
+nav{
+  padding: 10px 0;
+}
 
+nav > p{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+nav > ul > li{
+  display: inline-block;
+  padding: 10px;
+  background: #DEDEDE;
+  margin: 0 5px 0 0;
+  border: none;
+  color: navy;
+}
+
+nav > ul > li > a{
+  color: gray;
+}
 
