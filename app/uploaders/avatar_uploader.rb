@@ -14,7 +14,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path("fallbacks/placeholder.png")
+    ActionController::Base.helpers.asset_path("fallbacks/placeholder.jpg")
   end
 
   version :thumb do
