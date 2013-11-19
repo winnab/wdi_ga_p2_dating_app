@@ -7,20 +7,17 @@
     = form_tag "/search" do
 
       .fieldset
-        %b= label_tag "I am a:   "
-        / = label_tag "gender"
-        = select_tag("Select Gender", options_for_select([['Male'], ['Female']]))
+        %b= label_tag "I am a:"
+        = select_tag("gender", options_for_select([['Male'], ['Female']]))
 
         %p
-        %b= label_tag "Looking for a:   "
-        /   / = f.label :gender
-        = select_tag("Select Gender", options_for_select([['Male'], ['Female']]))
+        %b= label_tag "Looking for a:"
+        = select_tag("looking_for_gender", options_for_select([['Female'], ['Male']]))
 
         %p
         = label_tag "age"
         = text_field_tag "start_age"
         = text_field_tag "end_age"
-        / User.where("age")
 
         %p
         = label_tag "location"
