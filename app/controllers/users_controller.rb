@@ -32,9 +32,13 @@ class UsersController < ApplicationController
   end
 
   def star
+    Event.stars.create(user_id: current_user.id, target_user_id: params[:id])
+    request.xhr? ? (head :ok) : (redirect_to user_path params[:id])
   end
 
   def unstar
+    Event.stars.where(user_id: current_user.id, target_user_id: params[:id]).destroy_all
+    request.xhr? ? (head :ok) : (redirect_to user_path params[:id])
   end
 
   def poke

@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
     User.find_all_by_id(starred_ids)
   end
 
+  def already_starred_user? target_user_id
+    Event.stars.where(target_user_id: target_user_id, user_id: self.id).present?
+  end
+
   def pokes_received
     User.joins(:event_creator).where("events.target_user_id = ? and events.event_type = 'poke'", self.id).select("users.id, users.username, event_type, events.created_at")
   end

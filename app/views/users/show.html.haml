@@ -1,13 +1,11 @@
-.container.md-col-12
+.col-md-8
   %h2= @user.username
 
   %p
     %b= @user.first_name
     %b= @user.last_name
   %p
-    %b Image_Placeholder:
-  / /   = image_tag @user.image.detail.url
-  /     =img src="http://www.bizsitesolutions.com/images/team/placeholder2.jpg"
+    = image_tag @user.avatar
   %p
     %b Email:
     = @user.email
@@ -32,3 +30,10 @@
   / = STAR (highlighted or NOT)
   / = MESSAGE HIM/HER (msg logo)
 
+- if user_signed_in? && @user.id != current_user
+  .col-md-4
+    %p
+      - if current_user.already_starred_user? @user.id
+        = render :partial => 'unstar_btn', locals: {:user_id => @user.id}
+      - else
+        = render :partial => 'star_btn', locals: {:user_id => @user.id}

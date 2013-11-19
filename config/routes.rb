@@ -5,11 +5,11 @@ WdiGaP2DatingApp::Application.routes.draw do
 
   resources :users do
     member do
-      get   'star',     :to => "user#star"
-      get   'unstar',   :to => "user#unstar"
-      get   'flag',     :to => "user#flag"
-      get   'unflag',   :to => "user#unflag"
-      get   'poke',     :to => "user#poke"
+      get   'star',     :to => "users#star"
+      get   'unstar',   :to => "users#unstar"
+      get   'flag',     :to => "users#flag"
+      get   'unflag',   :to => "users#unflag"
+      get   'poke',     :to => "users#poke"
     end
   end
 
