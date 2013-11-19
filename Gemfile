@@ -32,10 +32,13 @@ end
 
 gem 'jquery-rails'
 
-group :development do
+group :development, :test do
   gem 'better_errors'
   gem 'pry-rails'
   gem "erb2haml"
+  gem 'rspec-rails'
+  gem 'shoulda'
+  gem 'database_cleaner'
 end
 
 
