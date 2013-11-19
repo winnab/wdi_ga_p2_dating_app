@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     Event.stars.where(target_user_id: target_user_id, user_id: self.id).present?
   end
 
+  def already_flagged_user? target_user_id
+    Event.flags.where(target_user_id: target_user_id, user_id: self.id).present?
+  end
+
   def pokes_received
     User.joins(:event_creator).where("events.target_user_id = ? and events.event_type = 'poke'", self.id).select("users.id, users.username, event_type, events.created_at")
   end

@@ -7,4 +7,5 @@ class Event < ActiveRecord::Base
   scope :views, -> { where(event_type: 'view')}
   scope :stars, -> { where(event_type: 'star')}
   scope :pokes, -> { where(event_type: 'poke')}
+  scope :flags, -> { where(event_type: 'flag')}
 end

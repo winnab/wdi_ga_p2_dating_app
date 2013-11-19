@@ -33,12 +33,20 @@ class UsersController < ApplicationController
 
   def star
     Event.stars.create(user_id: current_user.id, target_user_id: params[:id])
-    request.xhr? ? (head :ok) : (redirect_to user_path params[:id])
+    if request.xhr? 
+      render :partial => 'unstar_btn', locals: {:user_id => params[:id]}
+    else
+      redirect_to user_path params[:id]
+    end
   end
 
   def unstar
     Event.stars.where(user_id: current_user.id, target_user_id: params[:id]).destroy_all
-    request.xhr? ? (head :ok) : (redirect_to user_path params[:id])
+    if request.xhr? 
+      render :partial => 'star_btn', locals: {:user_id => params[:id]}
+    else
+      redirect_to user_path params[:id]
+    end
   end
 
   def poke
@@ -47,9 +55,21 @@ class UsersController < ApplicationController
   end
 
   def flag
+    Event.flags.create(user_id: current_user.id, target_user_id: params[:id])
+    if request.xhr? 
+      render :partial => 'unflag_btn', locals: {:user_id => params[:id]}
+    else
+      redirect_to user_path params[:id]
+    end
   end
 
   def unflag
+    Event.flags.where(user_id: current_user.id, target_user_id: params[:id]).destroy_all
+    if request.xhr? 
+      render :partial => 'flag_btn', locals: {:user_id => params[:id]}
+    else
+      redirect_to user_path params[:id]
+    end
   end
 
 end
