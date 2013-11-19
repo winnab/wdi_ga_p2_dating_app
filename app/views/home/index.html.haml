@@ -21,11 +21,10 @@
         = text_field_tag "start_age"
         = text_field_tag "end_age"
         / User.where("age")
-        / = select_tag("age" => dropdown, options_for_select[[18..80]])
 
         %p
         = label_tag "location"
-        = text_field_tag "location"
+        = select_tag("location", options_for_select([ ["London"], ["Birmingham"], ["Leeds"], ["Glasgow"], ["Sheffield"], ["Liverpool"], ["Manchester"], ["Bristol"], ["Cardiff"], ["Coventry"], ["Nottingham"], ["Leicester"], ["Newcastle"], ["Brighton"], ["Oxford"], ["Cambridge"] ]) )
 
 
 
