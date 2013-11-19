@@ -7,4 +7,6 @@ CarrierWave.configure do |config|
   }
   config.fog_directory  = ENV['WDI_P2_S3_BUCKET']  # required
   config.fog_public  = true  # optional, defaults to true
+  config.cache_dir = "#{Rails.root}/tmp/uploads" # for S3 https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Make-Carrierwave-work-on-Heroku
+
 end
