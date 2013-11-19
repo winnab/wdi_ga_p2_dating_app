@@ -1,14 +1,33 @@
-%h1 Explore
+.container
+  %h1 Explore
 
-- @users.each do |user|
-  = link_to user.first_name, user_path(user)
-  %br
-  = user.username
-  \,
-  = user.age
-  \,
-  = user.location
-  / = user.image
-  %br
-%p
-  = link_to "Back to Homepage", root_url
+  #profile-form
+    = render "form"
+
+
+
+  #div
+  - if @users_search
+    - @users_search.each do |user|
+      = link_to user.first_name, user_path(user)
+  - else
+    - @users.each do |user|
+      = link_to user.first_name, user_path(user)
+
+
+  / - @users_search.each do |user|
+  /   = link_to user.first_name, user_path(user)
+  /   %br
+  /   = image_tag user.avatar.search
+  /   \,
+  /   %br
+  /   = user.username
+  /   \,
+  /   = user.age
+  /   \,
+  /   = user.location
+  /   %br
+  %p
+    Why don't you...
+    = link_to "Sign up", new_user_registration_path
+    ?

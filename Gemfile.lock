@@ -134,6 +134,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rmagick (2.13.2)
     ruby-hmac (0.4.0)
     ruby_parser (3.1.3)
       sexp_processor (~> 4.1)
@@ -174,12 +175,13 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   erb2haml
-  fog
+  fog (~> 1.3.1)
   haml-rails
   jquery-rails
   pg
   pry-rails
   rails (= 3.2.14)
+  rmagick
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0)

@@ -16,8 +16,8 @@
 
         %p
         = label_tag "age"
-        = text_field_tag "start_age"
-        = text_field_tag "end_age"
+        = select_tag("start_age", options_for_select((18..70).to_a))
+        = select_tag("end_age", options_for_select((18..70).to_a))
 
         %p
         = label_tag "location"

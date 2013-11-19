@@ -1,0 +1,15 @@
+= form_tag "/search" do
+
+  %b= label_tag "Looking for a:"
+  = select_tag("looking_for_gender", options_for_select([['Female'], ['Male']]))
+  \::
+
+  = label_tag "age"
+  = select_tag("start_age", options_for_select((18..70).to_a))
+  = select_tag("end_age", options_for_select((18..70).to_a))
+  \::
+
+  = label_tag "location"
+  = select_tag("location", options_for_select([ ["London"], ["Birmingham"], ["Leeds"], ["Glasgow"], ["Sheffield"], ["Liverpool"], ["Manchester"], ["Bristol"], ["Cardiff"], ["Coventry"], ["Nottingham"], ["Leicester"], ["Newcastle"], ["Brighton"], ["Oxford"], ["Cambridge"] ]) )
+
+  = submit_tag "Go", :class => "btn btn-primary"

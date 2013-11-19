@@ -1,27 +1,27 @@
 !!!
 %html
   %head
-    %title WdiGaP2DatingApp
+    %title Dating!!
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %p.notice= notice
-    %p.alert= alert
     .container.col-md-12
-      .user-nav
-        - if user_signed_in?
-          Signed in as
-          %b= current_user.email
-          = link_to 'Edit Profile', edit_user_registration_path
-          \|
-          = link_to 'Inbox', inbox_path
-          \|
-          = link_to 'Sign Out',  destroy_user_session_path, method: :delete
-        - else
-          = link_to 'Sign up', new_user_registration_path
-          \|
-          = link_to 'Sign In', new_user_session_path
       %p.notice= notice
       %p.alert= alert
+      %nav
+        - if user_signed_in?
+          %p 
+            Hey there,
+            %b= current_user.email
+          %ul
+            %li= link_to 'Temp Dash Quicklink', dashboard_path
+            %li= link_to 'Edit Profile', edit_user_registration_path
+            %li= link_to 'Inbox', inbox_path
+            %li= link_to 'Temp My Profile Quicklink', user_path(current_user)
+            %li= link_to 'Sign Out',  destroy_user_session_path, method: :delete
+        - else
+          %ul
+            %li= link_to 'Sign up', new_user_registration_path
+            %li= link_to 'Sign In', new_user_session_path
       = yield

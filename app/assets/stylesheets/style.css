@@ -57,6 +57,50 @@
   padding: 20px;
 }
 
+.required::after{
+  content: " *";
+}
 
+.clear-emphasis{
+  font-weight: normal;
+}
 
+.password-hint::after{
+  content: " * note: minimum 6 characters";
+}
+
+nav{
+  padding: 10px 0;
+}
+
+nav > p{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+nav > ul > li{
+  display: inline-block;
+  padding: 10px;
+  background: #DEDEDE;
+  margin: 0 5px 0 0;
+  border: none;
+  color: navy;
+}
+
+nav > ul > li > a{
+  color: gray;
+}
+
+.newsfeed-item {
+  padding:10px;
+  background:#e1e1e1;
+  margin:0 0 20px 0;
+}
 
