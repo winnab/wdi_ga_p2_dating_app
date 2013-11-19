@@ -1,10 +1,14 @@
 %h1 Explore
 
 - @users.each do |user|
-  / = link_to user_path(@user.username)
+  = link_to user.first_name, user_path(user)
+  %br
   = user.username
   \,
   = user.age
   \,
   = user.location
   / = user.image
+
+%p
+  = link_to "Back to Homepage", root_url
