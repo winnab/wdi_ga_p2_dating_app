@@ -1,3 +1,3 @@
-%button{:class => "btn btn-small btn-warning", :id => "star-user", :'data-id' => user_id, :'data-action' => 'star/unset'}
-        %i{:class => "fam-award-star-delete"}
-        %span Unstar user
+%a{:href => "/users/#{user_id}/star/unset", :class => "btn btn-small btn-warning", :id => "star-user"}
+  %i{:class => "fam-award-star-delete"}
+  %span Unstar user

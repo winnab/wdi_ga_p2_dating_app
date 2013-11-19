@@ -1,3 +1,3 @@
-%button{:class => "btn btn-small btn-warning", :id => "flag-user", :'data-id' => user_id, :'data-action' => 'flag/unset'}
-        %i{:class => "fam-flag-green"}
-        %span Unflag user
+%a{:href => "/users/#{user_id}/flag/unset", :class => "btn btn-small btn-warning", :id => "flag-user"}
+  %i{:class => "fam-flag-green"}
+  %span Unflag user

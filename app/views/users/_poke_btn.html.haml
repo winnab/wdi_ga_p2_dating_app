@@ -1,3 +1,3 @@
-%button{:class => "btn btn-small btn-primary", :id => "poke-user", :'data-id' => user_id, :'data-action' => 'poke/set'}
-        %i{:class => "fam-tux"}
-        %span Throw penguin
+%a{:href => "/users/#{user_id}/poke/set", :class => "btn btn-small btn-primary", :id => "poke-user"}
+  %i{:class => "fam-tux"}
+  %span Throw penguin
