@@ -1,53 +1,57 @@
 .container.col-md-12
 
-  #main_header
   %h1 Dashboard
-  =image_tag (current_user.avatar.search)
   
   #div_header
     #header
+
+  .row.col-md-8
     %h3 Newsfeed
+    - if @news_items.present?
+      .newsfeed
+        - @news_items.each do |item|
+          .newsfeed-item
+            - if item.is_a?(Message)
+              .newsfeed-message
+                = simple_format item.content
+                %small= "#{time_ago_in_words item.created_at} ago"
+            - elsif item.is_a?(User)
+              .newsfeed-poke
+                %p
+                  = link_to item.username, user_path(item)
+                  poked you.
+                %small= "#{time_ago_in_words item.created_at} ago"
 
-  #div.row.col-md-8
-    #div.newsfeed
-      #div_2
-        Poked by {name}
 
-      #div_3
-        Messages from:
-        #msg_names
-          %p {name}
-          %p {name}
-          %p {name}
-          %p {name}
+    - else
+      %p No news items yet.
+      
 
-  #div.row2.col-md-4
-    #links
-      #div_r1
-        %p Link_to "Update Profile", edit_user_path
-        %br
+  .row2.col-md-4
+    .dash-unit
+      %h4
+        Stars
+        = "(#{@starred_list.count})" if @starred_list.present?
+      %p Potential matches you've starred:
+      - if @starred_list.present?
+        %ul
+          - @starred_list.each do | star |
+            %li= link_to star.username, user_path(star)
+      - else
+        %p Any potential matches your star will appear here.
 
-      #div_r2
-        %p Link_to "Looking for" criteria, looking_for_path
-        %br
-
-      #div_r3
-        %p Link_to "Inbox", inbox_path
-        %br
-
-      #div_r4
-        %p Link_to "My Account", account_path
-        %br
-
-      #div_r5
-        %p Starred List (value on page),
-        %br
-
-      #div_r6
-        %p Stars (value on page),
-        %br
-
-      #div_r7
-        %p Number of times Profile viewed,
-        %br
-
+    - if @views_summary.present?
+      .dash-unit
+        %h4 Profile views
+        %p In the past 7 days:
+        %ul
+          - ((Date.today - 6).to_date..Date.today.to_date).to_a.reverse_each do |date|
+            %li
+              = date == Date.today ? "Today" : date.strftime("%A")
+              = ": #{@views_summary[date.to_s] || 0} views"
+    .dash-unit
+      %h4 Settings
+      %ul
+        %li= link_to "My Account", account_path
+        %li= link_to "Update Profile", edit_user_registration_path
+        %li= link_to "Update looking for", '/'
