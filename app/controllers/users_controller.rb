@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :do_search]
 
-  def blah
-  end
-
   def dashboard
     @news_items     = current_user.news_items
     @starred_list   = current_user.get_starred_users
@@ -31,46 +28,26 @@ class UsersController < ApplicationController
   def new_search
   end
 
-  def star
-    Event.stars.create(user_id: current_user.id, target_user_id: params[:id])
-    if request.xhr? 
-      render :partial => 'unstar_btn', locals: {:user_id => params[:id]}
-    else
-      redirect_to user_path params[:id]
-    end
-  end
+  def do_event
+    # Whitelist action & event_type params
+    event_type   = (['poke', 'star', 'view', 'flag'].include? params[:event_type]) ? params[:event_type] : 'view' #fallback
+    event_action = (params[:event_action] == 'set') ? 'set' : 'unset'
 
-  def unstar
-    Event.stars.where(user_id: current_user.id, target_user_id: params[:id]).destroy_all
-    if request.xhr? 
-      render :partial => 'star_btn', locals: {:user_id => params[:id]}
-    else
-      redirect_to user_path params[:id]
+    if event_action == 'unset'
+      Event.where(event_type: event_type, user_id: current_user.id, target_user_id: params[:id]).destroy_all
+    else # set
+      Event.create(event_type: event_type, user_id: current_user.id, target_user_id: params[:id])
     end
-  end
 
-  def poke
-    Event.pokes.create(user_id: current_user.id, target_user_id: params[:id])
-    if request.xhr? 
-      render :partial => 'poke_done', locals: {:user_id => params[:id]}
-    else
-      redirect_to user_path params[:id]
-    end
-  end
-
-  def flag
-    Event.flags.create(user_id: current_user.id, target_user_id: params[:id])
-    if request.xhr? 
-      render :partial => 'unflag_btn', locals: {:user_id => params[:id]}
-    else
-      redirect_to user_path params[:id]
-    end
-  end
-
-  def unflag
-    Event.flags.where(user_id: current_user.id, target_user_id: params[:id]).destroy_all
-    if request.xhr? 
-      render :partial => 'flag_btn', locals: {:user_id => params[:id]}
+    if request.xhr?
+      case
+        when event_type == 'star' && event_action == 'set'   then render :partial => 'unstar_btn', locals: {:user_id => params[:id]}
+        when event_type == 'star' && event_action == 'unset' then render :partial => 'star_btn',   locals: {:user_id => params[:id]}
+        when event_type == 'flag' && event_action == 'set'   then render :partial => 'unflag_btn', locals: {:user_id => params[:id]}
+        when event_type == 'flag' && event_action == 'unset' then render :partial => 'flag_btn',   locals: {:user_id => params[:id]}
+        when event_type == 'poke' && event_action == 'set'   then render :partial => 'poke_done',  locals: {:user_id => params[:id]}
+        else redirect_to user_path params[:id]
+      end
     else
       redirect_to user_path params[:id]
     end

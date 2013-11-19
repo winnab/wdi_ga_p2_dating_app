@@ -1,15 +1,10 @@
 WdiGaP2DatingApp::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'users/registrations' }
-  # devise_for :users
- # careful! call devise_for once only and do it before resource users!
+  # careful! call devise_for once only and do it before resource users!
 
   resources :users do
     member do
-      get   'star',     :to => "users#star"
-      get   'unstar',   :to => "users#unstar"
-      get   'flag',     :to => "users#flag"
-      get   'unflag',   :to => "users#unflag"
-      get   'poke',     :to => "users#poke"
+      get ':event_type/:event_action', :to => "users#do_event"
     end
   end
 
@@ -26,9 +21,4 @@ WdiGaP2DatingApp::Application.routes.draw do
 
   get   'search',             :to => "users#new_search"
   post  'search',             :to => "users#do_search",         :as => "do_search"
-
-  #DELETE THIS. THE CODE IN USERS/BLAH.HTML.HAML IS FOR USERS#SHOW
-  get   'blah',            :to => "users#blah"
-
-
 end

@@ -26,10 +26,6 @@
     = @user.bio
   %br
 
-  / %p
-  / = STAR (highlighted or NOT)
-  / = MESSAGE HIM/HER (msg logo)
-
 - if user_signed_in? && @user.id != current_user
   .col-md-4
     %p#star-action
