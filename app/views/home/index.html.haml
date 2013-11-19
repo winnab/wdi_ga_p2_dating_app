@@ -7,12 +7,12 @@
     = form_tag "/search" do
 
       .fieldset
-        %b= "I am a:   "
+        %b= label_tag "I am a:   "
         / = label_tag "gender"
         = select_tag("Select Gender", options_for_select([['Male'], ['Female']]))
 
         %p
-        %b= "Looking for a:   "
+        %b= label_tag "Looking for a:   "
         /   / = f.label :gender
         = select_tag("Select Gender", options_for_select([['Male'], ['Female']]))
 

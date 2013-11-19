@@ -17,6 +17,9 @@ class UsersController < ApplicationController
 
   def do_search
     @users = User.where("age BETWEEN ? AND ?", params[:start_age], params[:end_age])
+    # @users = User.where("looking" => "female", params[:gender])
+    # @users = User.where("looking" => "male", params[:gender])
+    # @users = User.where("location = ?", location)
   end
 
   def new_search
