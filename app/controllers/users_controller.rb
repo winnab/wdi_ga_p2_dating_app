@@ -42,6 +42,8 @@ class UsersController < ApplicationController
   end
 
   def poke
+    Event.pokes.create(user_id: current_user.id, target_user_id: params[:id])
+    request.xhr? ? (head :ok) : (redirect_to user_path params[:id])
   end
 
   def flag

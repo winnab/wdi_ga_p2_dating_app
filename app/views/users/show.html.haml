@@ -37,3 +37,4 @@
         = render :partial => 'unstar_btn', locals: {:user_id => @user.id}
       - else
         = render :partial => 'star_btn', locals: {:user_id => @user.id}
+    %p= render :partial => 'poke_btn', locals: {:user_id => @user.id}

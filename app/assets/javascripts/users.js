@@ -14,7 +14,7 @@ $(function() {
     $btn.attr('data-action', 'star');
   }
 
-  function toggleStar() {
+  function starAction() {
     $this      = $(this);
     var action = $this.attr('data-action')
     var url    = "/users/" + $this.attr('data-id') + "/" + action;
@@ -24,5 +24,17 @@ $(function() {
     })
   }
 
-  $('#star-user').on('click', toggleStar);
+  function pokeAction() {
+    $this     = $(this);
+    var url    = "/users/" + $this.attr('data-id') + "/poke";
+
+    $.get(url, function() {
+      $this.slideUp(200, function() {
+        $this.next().slideDown(600);
+      })
+    })
+  }
+
+  $('#star-user').on('click', starAction);
+  $('#poke-user').on('click', pokeAction);
 })
