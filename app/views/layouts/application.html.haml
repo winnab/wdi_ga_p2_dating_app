@@ -20,8 +20,10 @@
             %li= link_to 'Inbox', inbox_path
             %li= link_to 'Temp My Profile Quicklink', user_path(current_user)
             %li= link_to 'Sign Out',  destroy_user_session_path, method: :delete
+            %li= link_to 'Search', search_path
         - else
           %ul
             %li= link_to 'Sign up', new_user_registration_path
             %li= link_to 'Sign In', new_user_session_path
+            %li= link_to 'Search', search_path            
       = yield

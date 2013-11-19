@@ -1,100 +1,48 @@
-$spacing: 3px 0px; /* for use in development -  showing where divs end*/
-$smallspacing: 5px 20px;
-$color1: #75a40a; /* green */
-$color2: #f57e20; /* orange */
-$color3: #03345c; /* dark blue */
-$color4: #b7d3e0; /* pale blue */
-$color5: #0784ab; /* mid blue */
-$radius: 25px 0px 25px 0px;
-
-
-div {
-  border: 2px solid blue;
-  margin: $spacing;
-  padding: $smallspacing;
+.required::after{
+  content: " *";
 }
 
-#nav {
-  background-color: $color5;
-  color: $color3;
-  font-weight: bold;
-  border: 2px solid $color2;
-  text-align: center;
-    ul li {
-      display: inline-block;
-    }
+.clear-emphasis{
+  font-weight: normal;
 }
 
-#main {
-  background-color: black;
+.password-hint::after{
+  content: " * note: minimum 6 characters";
 }
 
-#profile {
-  background-color: $color3;
-  width: auto;
+nav{
+  padding: 10px 0;
 }
 
-#avatar {
-  height: 200px;
-  width: 200px;
-  background-image: url("http://mocsconnect.com/s/1341/images/gid3/editor/2013/person-placeholder.jpg");
-  background-size: 100% 100%;
-  border: 2px solid $color2;
+nav > p{
+  display: inline-block;
+  margin-right: 10px;
 }
 
-#name_age_location {
-  border: 2px solid $color2;
-  color: $color3;
-  background-color: $color2;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
+nav > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
 }
 
-#tagline {
-  border: 2px solid $color2;
-  color: $color2;
-  background-color: $color3;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+nav > ul > li{
+  display: inline-block;
+  padding: 10px;
+  background: #DEDEDE;
+  margin: 0 5px 0 0;
+  border: none;
+  color: navy;
 }
 
-#bio {
-  border-top-right-radius: 50px;
+nav > ul > li > a{
+  color: gray;
+}
 
-  border: 4px solid $color2;
-  border-bottom: 2px solid $color2;
-  background-color: $color4;
-  color: $color3;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  line-height: 1.5em;
+.newsfeed-item {
+  padding:10px;
+  background:#e1e1e1;
+  margin:0 0 20px 0;
 }
 
 
-#qualities {
-  border: 4px solid $color2;
-  border-top: 2px solid $color2;
-  background-color: $color3;
-  border-radius: 5px;
-  border-bottom-left-radius: 50px;
-    ul li {
-      display: inline-block;
-      width: auto;
-      line-height: 1em;
-      padding: $smallspacing;
-      padding-left: 35px;
-      border: 3px solid $color3;
-      border-radius: 5px;
-      background: $color1 url('http://www.maplewiki.net/images/d/d4/Orange_Throwing-Star.gif') left no-repeat;
-      background-position: left;
-    }
-}
-
-#footer {
-  height:40px;
-  width: 100%;
-  background-color: $color5;
-  color: $color3;
-  text-align: center;
-  font-weight: bold;
-}
