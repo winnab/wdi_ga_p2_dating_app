@@ -1,61 +1,64 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  = devise_error_messages!
-  .form
-    .form-group
-      = f.label :first_name
-      %br/
-      = f.text_field :first_name, :autofocus => true
-    .form-group
-      = f.label :last_name
-      %br/
-      = f.text_field :last_name
-    .form-group
-      = f.label :username
-      %br/
-      = f.text_field :username
-    .form-group
-      = f.label :email
-      %br/
-      = f.email_field :email
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %div
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    .form-group
-      = f.label :password
-      %i (leave blank if you don't want to change it)
-      %br/
-      = f.password_field :password, :autocomplete => "off"
-    .form-group
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation
-    .form-group
-      = f.label :current_password
-      %i (we need your current password to confirm your changes)
-      %br/
-      = f.password_field :current_password
-    .form-group
-      = f.label :gender
-      %br/
-      = select(:user, :gender, [['Male'], ['Female']])
-      %br/
-    .form-group
-      = f.label :age
-      %br/
-      = f.number_field :age
-      %br/
-    .form-group
-      = f.label :location
-      %br/
-      = f.text_field :location
-    .form-group
-      = f.label :avatar
-      = f.file_field :avatar
+.row
+  .col-md-12
+    %h1 Update My Account
+.row
+  .col-md-4
+    .panel.panel-default
+      .panel-heading              
+        %h2.panel-title Edit My Details
+      .panel-body
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+          = devise_error_messages!
+          %form{role: "form"}
+            .fieldset
+              .form-group
+                = f.label :username, class: "required"
+                = f.text_field :username, placeholder: "Username", class: "form-control"
+              .form-group
+                = f.label :email, class: "required"
+                = f.email_field :email, placeholder: "Email Address", class: "form-control"
+                - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                  %div
+                    Currently waiting confirmation for: #{resource.unconfirmed_email}  
+              .form-group
+                = f.label :password, class: "password-hint"
+                = f.password_field :password, placeholder: "Password", class: "form-control"
+              .form-group
+                = f.label :password_confirmation, class: "required"
+                = f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control"          
+              .form-group
+                = f.label :first_name, class: "required"
+                = f.text_field :first_name, placeholder: "First Name", class: "form-control", :autofocus => true
+              .form-group
+                = f.label :last_name, class: "required"
+                = f.text_field :last_name, placeholder: "Last Name", class: "form-control"
+              .form-group
+                = f.label :plan, class: "required"
+                = select(:user, :plan, [['Standard'], ['Premiere']])
+              .form-group
+                = f.label :avatar, "Upload a photo", class: "required"
+                = f.file_field :avatar  
+              .form-group
+                = f.label :gender, class: "clear-emphasis"
+                = select(:user, :gender, [['Female'], ['Male'], ['Rather Not Say']])
+              .form-group
+                = f.label :age, class: "clear-emphasis"
+                = f.number_field :age, placeholder: "Age", class: "form-control"
+              .form-group
+                = f.label :location, class: "clear-emphasis"
+                = f.text_field :location, placeholder: "Location", class: "form-control"
+              .form-group
+                = f.label :bio, "About me:", class: "clear-emphasis"
+                = f.text_area :bio, placeholder: "Tell us a bit about yourself...", class: "form-control", rows: 5           
+              .form-group
+                = f.label :current_password, class: "required hint"
+                = f.password_field :current_password, placeholder: "Current Password", class: "form-control"                
+              .form-group
+                = f.submit "Update My Profile", class: "btn btn-default form-control"
 
-    .btn= f.submit "Update"
-  %h3 Cancel my account
-  %p
-    Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
-  = link_to "Back", :back
+        %h3 Cancel my account
+        %p Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
+        %button
+          = link_to "Back", :back
+
+       
