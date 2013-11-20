@@ -30,6 +30,9 @@ class UsersController < ApplicationController
 
   def new_search
     @users = User.all
+    page = params[:page] || 1
+    per_page = 9
+    @users = User.paginate(page: page, per_page: per_page).order('created_at').all
   end
 
   def do_event
