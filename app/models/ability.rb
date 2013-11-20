@@ -13,7 +13,7 @@ class Ability
     #     can :read, :all
     # end
 
-    if user.plan == 'standard' || user.plan == 'premium'
+    if user.id?
         can :read, :all
         can [:dashboard, :do_search, :new_search, :do_event], User
 
