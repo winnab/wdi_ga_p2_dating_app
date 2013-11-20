@@ -79,4 +79,7 @@ class User < ActiveRecord::Base
     [self.messages_received, self.pokes_received].flatten.sort_by(&:created_at)
   end
 
+  # CANCAN
+
+
 end

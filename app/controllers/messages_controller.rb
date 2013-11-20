@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+  authorize_resource
+
   def inbox
     @contact_list = current_user.contact_list
   end
