@@ -1,10 +1,32 @@
 FactoryGirl.define do
 
   factory :message do
+    #attributes
+    content { Faker::Lorem.paragraph(1) }
+    # associations
     sender
     recipient
-    content { Faker::Lorem.paragraph(1) }
+
+    factory :message_to_female do
+      association :recipient, factory: :female
+    end
+
+    factory :message_to_male do
+      association :recipient, factory: :male
+    end
+
   end
+
+
+  # trait :with_users do
+  #   ignore do
+  #     sender 2
+  #   end
+  #   after(:create) do |user, evaluator|
+  #     FactoryGirl.create_list :female, evaluator.message_count, sender: user
+  #   end
+  # end
+
 
 end
 
