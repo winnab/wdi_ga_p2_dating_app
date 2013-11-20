@@ -1,54 +1,59 @@
-.col-md-8
-  %h2= @user.username
+.row
+  .col-md-12
+    %h1= @user.username
+.row
+  .col-md-5
+    %p
+      %b= @user.first_name
+      %b= @user.last_name
+    .profile-image
+      = image_tag @user.avatar.gallery
+    %p
+      %b Email:
+      = @user.email
+    %p
+      %b Age:
+      = @user.age
+    %p
+      %b Gender:
+      = @user.gender
+    %p
+      %b Location:
+      = @user.location
+    %p
+      %b Tagline:
+      = @user.tagline
+    %p
+      %b About Me:
+      = @user.bio
+    %br
 
-  %p
-    %b= @user.first_name
-    %b= @user.last_name
-  .profile-image
-    = image_tag @user.avatar.gallery
-  %p
-    %b Email:
-    = @user.email
-  %p
-    %b Age:
-    = @user.age
-  %p
-    %b Gender:
-    = @user.gender
-  %p
-    %b Location:
-    = @user.location
-  %p
-    %b Tagline:
-    = @user.tagline
-  %p
-    %b About Me:
-    = @user.bio
-  %br
+  .col-md-5
+    %h2 Qualities
 
-- if user_signed_in? && @user.id != current_user.id
-  .col-md-4
-    #star-action.profile-btn
-      - if current_user.already_starred_user? @user.id
-        = render :partial => 'unstar_btn', locals: {:user_id => @user.id}
-      - else
-        = render :partial => 'star_btn', locals: {:user_id => @user.id}
-    #message-action.profile-btn
-      = render :partial => 'message_btn', locals: {:user_id => @user.id}
-    #poke-action.profile-btn= render :partial => 'poke_btn', locals: {:user_id => @user.id}
-    #flag-action.profile-btn
-      - if current_user.already_flagged_user? @user.id
-        = render :partial => 'unflag_btn', locals: {:user_id => @user.id}
-      - else
-        = render :partial => 'flag_btn', locals: {:user_id => @user.id}
+  - if user_signed_in? && @user.id != current_user.id
+    .col-md-2
+      #star-action.profile-btn
+        - if current_user.already_starred_user? @user.id
+          = render :partial => 'unstar_btn', locals: {:user_id => @user.id}
+        - else
+          = render :partial => 'star_btn', locals: {:user_id => @user.id}
+      #message-action.profile-btn
+        = render :partial => 'message_btn', locals: {:user_id => @user.id}
+      #poke-action.profile-btn= render :partial => 'poke_btn', locals: {:user_id => @user.id}
+      #flag-action.profile-btn
+        - if current_user.already_flagged_user? @user.id
+          = render :partial => 'unflag_btn', locals: {:user_id => @user.id}
+        - else
+          = render :partial => 'flag_btn', locals: {:user_id => @user.id}
 
-#inline-message-compose
-  .inner
-    %i{:class =>"fam-cross", :id => 'inline-compose-close'}
-    %h4 Message to #{@user.username}
-    = form_for @new_message do |f|
-      = f.hidden_field :recipient_id
-      = f.hidden_field :sender_id
-      .form-group
-        = f.text_area :content, {:id => 'inline-compose-text', :class => 'form-control', :rows => 5}
-      = f.submit 'Send message', {:class => 'btn btn-primary', :id => "inline-compose-send"}
+  #inline-message-compose
+    .inner
+      %i{:class =>"fam-cross", :id => 'inline-compose-close'}
+      %h4 Message to #{@user.username}
+      = form_for @new_message do |f|
+        = f.hidden_field :recipient_id
+        = f.hidden_field :sender_id
+        .form-group
+          = f.text_area :content, {:id => 'inline-compose-text', :class => 'form-control', :rows => 5}
+        = f.submit 'Send message', {:class => 'btn btn-primary', :id => "inline-compose-send"}
