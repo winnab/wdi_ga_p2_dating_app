@@ -29,7 +29,7 @@
                 = f.text_field :last_name, placeholder: "Last Name", class: "form-control"
               .form-group
                 = f.label :plan, class: "required"
-                = select(:user, :plan, [['Standard'], ['Premiere']])
+                = select(:user, :plan, [['Standard'], ['Premium']])
               .form-group
                 = f.label :avatar, "Upload a photo", class: "required"
                 = f.file_field :avatar  
