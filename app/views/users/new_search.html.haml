@@ -33,24 +33,5 @@
       = user.location
       %br
 
-  / #div
-  / - if @users_search
-  /   - @users_search.each do |user|
-  /     = link_to user.first_name, user_path(user)
-  /     %br
-  /     = image_tag user.avatar.search
-  /     \,
-  /     %br
-  /     = user.username
-  /     \,
-  /     = user.age
-  /     \,
-  /     = user.location
-  /     %br
-  / - else
-  /   - @users.each do |user|
-  /     = link_to user.first_name, user_path(user)
-  /     %br
 
-
-  = will_paginate @users
+  / = will_paginate @users

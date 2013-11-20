@@ -22,9 +22,7 @@ class UsersController < ApplicationController
   end
 
   def do_search
-    @users = User.all
     @users_search = User.where("(age BETWEEN ? AND ?) AND gender = ? AND location = ?", params[:start_age], params[:end_age], params[:looking_for_gender], params[:location])
-
 
     # @users = User.where("age BETWEEN ? AND ?", params[:start_age], params[:end_age])
     # @users = User.where("gender = ?", params[:looking_for_gender])
@@ -32,11 +30,16 @@ class UsersController < ApplicationController
   end
 
   def new_search
-    @users = User.all
-    page = params[:page] || 1
-    per_page = 9
-    @users = User.paginate(page: page, per_page: per_page).order('created_at').all
+    # @users = User.all
+    @users = User.paginate(:page => params[:page], :per_page => 9)
+    @users -= [current_user]
   end
+
+  # PAGINATION back-up
+  # page = params[:page] || 1
+  # per_page = 9
+
+  # @users = User.paginate(page: page, per_page: per_page).order('created_at').all
 
   def do_event
     # Whitelist action & event_type params

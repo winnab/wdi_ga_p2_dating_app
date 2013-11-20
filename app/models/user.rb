@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
     [self.messages_received, self.pokes_received, self.profile_views].flatten.sort_by(&:created_at)
   end
 
-  # CANCAN
-
+  # USER SEARCH
+  # named_scope :without_user, lambda{|user| user ? {:conditions => ["id != ?", user.id]} : {} }
 
 end
