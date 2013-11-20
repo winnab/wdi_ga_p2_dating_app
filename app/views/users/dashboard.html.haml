@@ -2,9 +2,6 @@
 
   %h1 Dashboard
   
-  #div_header
-    #header
-
   .row.col-md-8
     %h3 Newsfeed
     - if @news_items.present?
@@ -13,14 +10,24 @@
           .newsfeed-item
             - if item.is_a?(Message)
               .newsfeed-message
+                %strong
+                  %i{:class => "fam-email-open"}
+                  New message from #{item.sender.username}
+                  %span.newsfeed-time= "#{time_ago_in_words item.created_at} ago"
                 = simple_format item.content
-                %small= "#{time_ago_in_words item.created_at} ago"
-            - elsif item.is_a?(User)
-              .newsfeed-poke
-                %p
-                  = link_to item.username, user_path(item)
-                  poked you.
-                %small= "#{time_ago_in_words item.created_at} ago"
+            - elsif item.is_a?(Event)
+              - if item.event_type == 'poke'
+                .newsfeed-poke
+                  %i{:class => "fam-tux"}
+                  = link_to item.user.username, user_path(item.user.id)
+                  threw a penguin at you
+                  %span.newsfeed-time= "#{time_ago_in_words item.created_at} ago"
+              - else
+                .newsfeed-view
+                  %i{:class => "fam-emoticon-wink"}
+                  = link_to item.user.username, user_path(item.user.id)
+                  viewed your profile
+                  %span.newsfeed-time= "#{time_ago_in_words item.created_at} ago"
 
 
     - else
