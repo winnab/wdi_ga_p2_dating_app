@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   # before_filter :authenticate_user!, except: [:index, :show, :do_search]
+  authorize_resource
 
   def dashboard
     @news_items     = current_user.news_items

@@ -13,24 +13,18 @@ class Ability
     #     can :read, :all
     # end
 
-    if user.plan? :standard, :premium
-        can :update, User do |user|
-            user == current_user
-        end
-        can :destroy, User do |user|
-            user == current_user
-        end
-        can :create, Event do |event|
-            event.user == current_user
-        end
-        can :destroy, Event do |event|
-            event.user == current_user
-        end
-        can :create, Message do |msg|
-            msg.user == current_user
+    if user.plan == 'standard' || user.plan == 'premium'
+        can :read, :all
+        can [:dashboard, :do_search, :new_search, :do_event], User
+
+        # Messages
+        can [:inbox, :create, :conversation], Message
+        can :destroy, Message do |message|
+          (message.sender.id == current_user.id) || (message.recipient.id == current_user.id)
         end
     else
-        can :read, :all
+      can :read, :all
+      can [:do_search, :new_search], User
     end
 
     #
