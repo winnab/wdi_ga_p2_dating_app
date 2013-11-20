@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def new_search
-
+    @users = User.all
   end
 
   def do_event

@@ -1,6 +1,7 @@
 .container
   %h1 Explore
 
+
   #profile-form
     = render "form"
   %br
@@ -32,20 +33,21 @@
       = user.location
       %br
 
-  / - @users_search.each do |user|
-  /   = link_to user.first_name, user_path(user)
-  /   %br
-  /   = image_tag user.avatar.search
-  /   \,
-  /   %br
-  /   = user.username
-  /   \,
-  /   = user.age
-  /   \,
-  /   = user.location
-  /   %br
-
-  %p
-    Why don't you...
-    = link_to "Sign up", new_user_registration_path
-    ?
+  / #div
+  / - if @users_search
+  /   - @users_search.each do |user|
+  /     = link_to user.first_name, user_path(user)
+  /     %br
+  /     = image_tag user.avatar.search
+  /     \,
+  /     %br
+  /     = user.username
+  /     \,
+  /     = user.age
+  /     \,
+  /     = user.location
+  /     %br
+  / - else
+  /   - @users.each do |user|
+  /     = link_to user.first_name, user_path(user)
+  /     %br
