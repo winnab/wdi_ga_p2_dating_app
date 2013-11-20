@@ -8,8 +8,8 @@
   %body
     .container.col-md-12
       #alerts
-      %p.notice= notice
-      %p.alert= alert
+        .alert.alert-success.notice{style:'display:none;'}= notice if notice.present?
+        .alert.alert-danger{style:'display:none;'}= alert if alert.present?
       %nav
         - if user_signed_in?
           %p 

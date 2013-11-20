@@ -33,6 +33,7 @@ $(function() {
     $.post('/messages', formData, function(data) {
       $('#inline-compose-text').val('');
       hideInlineCompose();
+      window.flashAlert($('.alert-success'), 'Your message has been sent.')
     })
   }
 
