@@ -13,7 +13,7 @@ $(function() {
 
 
   // Inline messaging
-  $inlineMessageContainer = $('#message-compose');
+  $inlineMessageContainer = $('#inline-message-compose');
 
   function showInlineCompose() {
     $('#message-user').addClass('disabled');
