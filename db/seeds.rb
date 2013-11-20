@@ -9,12 +9,12 @@
 User.destroy_all
 Message.destroy_all
 
-user1 = User.create(first_name: "Bob", last_name:"Tester", username: "Bobbob", email: "bob@bob.com", password: "bob12345", confirmed_at: DateTime.now)
-user2 = User.create(first_name: "Alice", last_name:"Tester", username: "Alice1986", email: "alice@alice.com", password: "alice12345", confirmed_at: DateTime.now)
-user3 = User.create(first_name: "Kate", last_name:"Tester", username:"CrazyKate", email: "kate@kate.com", password: "kate12345", confirmed_at: DateTime.now)
+user1 = User.create(first_name: "Bob", last_name:"Tester", username: "Bobbob", email: "bob@bob.com", age: 22, gender: "Male", location: "London", plan: "standard", password: "bob12345", confirmed_at: DateTime.now)
+user2 = User.create(first_name: "Alice", last_name:"Tester", username: "Alice1986", email: "alice@alice.com", age: 20, gender: "Female", location: "Oxford", plan: "premium", password: "alice12345", confirmed_at: DateTime.now)
+user3 = User.create(first_name: "Kate", last_name:"Tester", username:"CrazyKate", email: "kate@kate.com", age: 21, gender: "Female", location: "London", plan: "standard", password: "kate12345", confirmed_at: DateTime.now)
 
-user1.plan = "standard"
-user2.plan = "premium"
+# user1.plan = "standard"
+# user2.plan = "premium"
 # user3.plan = "premium"
 # Bob messages Alice
 message1 = Message.create(sender_id: user1.id, recipient_id: user2.id, content: "Hello Alice, from Bob")
