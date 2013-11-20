@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show, :do_search]
+  # before_filter :authenticate_user!, except: [:index, :show, :do_search]
 
   def dashboard
     @news_items     = current_user.news_items
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @new_message = current_user.messages_sent.new(recipient_id: params[:id])
 
     # Track view if current_user logged in & not viewing own profile
     Event.create(event_type: :view, user_id: current_user.id, target_user_id: @user.id) if (user_signed_in? && current_user.id != @user.id)

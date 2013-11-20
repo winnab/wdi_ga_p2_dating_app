@@ -28,21 +28,27 @@
 
 - if user_signed_in? && @user.id != current_user.id
   .col-md-4
-    %p#star-action
+    #star-action.profile-btn
       - if current_user.already_starred_user? @user.id
         = render :partial => 'unstar_btn', locals: {:user_id => @user.id}
       - else
         = render :partial => 'star_btn', locals: {:user_id => @user.id}
-    %p#poke-action= render :partial => 'poke_btn', locals: {:user_id => @user.id}
-    %p#flag-action
+    #message-action.profile-btn
+      = render :partial => 'message_btn', locals: {:user_id => @user.id}
+    #poke-action.profile-btn= render :partial => 'poke_btn', locals: {:user_id => @user.id}
+    #flag-action.profile-btn
       - if current_user.already_flagged_user? @user.id
         = render :partial => 'unflag_btn', locals: {:user_id => @user.id}
       - else
         = render :partial => 'flag_btn', locals: {:user_id => @user.id}
 
-
-
-/ - if current_user.id = user.id
-/ = link_to "Edit User", edit_user_registration_path(@user)
-/ \::
-/ = link_to "Delete User", user_path(@user), method: :delete
+#inline-message-compose
+  .inner
+    %i{:class =>"fam-cross", :id => 'inline-compose-close'}
+    %h4 Message to #{@user.username}
+    = form_for @new_message do |f|
+      = f.hidden_field :recipient_id
+      = f.hidden_field :sender_id
+      .form-group
+        = f.text_area :content, {:id => 'inline-compose-text', :class => 'form-control', :rows => 5}
+      = f.submit 'Send message', {:class => 'btn btn-primary', :id => "inline-compose-send"}

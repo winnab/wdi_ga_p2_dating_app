@@ -7,8 +7,9 @@
     = csrf_meta_tags
   %body
     .container.col-md-12
-      %p.notice= notice
-      %p.alert= alert
+      #alerts
+        .alert.alert-success.notice{style:'display:none;'}= notice if notice.present?
+        .alert.alert-danger{style:'display:none;'}= alert if alert.present?
       %nav
         - if user_signed_in?
           %p 
