@@ -1,63 +1,65 @@
-.container.col-md-12
+.row
+  .col-md-12
 
-  %h1 Dashboard
-  
-  .row.col-md-8
-    %h3 Newsfeed
-    - if @news_items.present?
-      .newsfeed
-        - @news_items.each do |item|
-          .newsfeed-item
-            - if item.is_a?(Message)
-              .newsfeed-message
-                %strong
-                  %i{:class => "fam-email-open"}
-                  New message from #{item.sender.username}
-                  %span.newsfeed-time= "#{time_ago_in_words item.created_at} ago"
-                = simple_format item.content
-            - elsif item.is_a?(Event)
-              - if item.event_type == 'poke'
-                .newsfeed-poke
-                  %i{:class => "fam-tux"}
-                  = link_to item.user.username, user_path(item.user.id)
-                  threw a penguin at you
-                  %span.newsfeed-time= "#{time_ago_in_words item.created_at} ago"
-              - else
-                .newsfeed-view
-                  %i{:class => "fam-emoticon-wink"}
-                  = link_to item.user.username, user_path(item.user.id)
-                  viewed your profile
-                  %span.newsfeed-time= "#{time_ago_in_words item.created_at} ago"
+    %h1 Dashboard
+    %h2 Hey there, #{current_user.first_name}.
+    .row
+      .col-md-8
+        %h3 Newsfeed
+        - if @news_items.present?
+          .newsfeed
+            - @news_items.each do |item|
+              .newsfeed-item
+                - if item.is_a?(Message)
+                  .newsfeed-message
+                    %strong
+                      %i{:class => "fam-email-open"}
+                      Message from #{item.sender.username}:
+                      %span.newsfeed-time= "#{time_ago_in_words item.created_at} ago"
+                    = simple_format item.content
+                - elsif item.is_a?(Event)
+                  - if item.event_type == 'poke'
+                    .newsfeed-poke
+                      %i{:class => "fam-tux"}
+                      = link_to item.user.username, user_path(item.user.id)
+                      threw a penguin at you
+                      %span.newsfeed-time= "#{time_ago_in_words item.created_at} ago"
+                  - else
+                    .newsfeed-view
+                      %i{:class => "fam-emoticon-wink"}
+                      = link_to item.user.username, user_path(item.user.id)
+                      viewed your profile
+                      %span.newsfeed-time= "#{time_ago_in_words item.created_at} ago"
 
+        - else
+          %p No news items yet.
+          
+      .col-md-1
 
-    - else
-      %p No news items yet.
-      
+      .col-md-3
+        .dash-unit
+          %h4
+            Stars
+            = "(#{@starred_list.count})" if @starred_list.present?
+          %p Potential matches you've starred:
+          - if @starred_list.present?
+            %ul
+              - @starred_list.each do | star |
+                %li= link_to star.username, user_path(star)
+          - else
+            %p Any potential matches your star will appear here.
 
-  .row2.col-md-4
-    .dash-unit
-      %h4
-        Stars
-        = "(#{@starred_list.count})" if @starred_list.present?
-      %p Potential matches you've starred:
-      - if @starred_list.present?
-        %ul
-          - @starred_list.each do | star |
-            %li= link_to star.username, user_path(star)
-      - else
-        %p Any potential matches your star will appear here.
-
-    - if @views_summary.present?
-      .dash-unit
-        %h4 Profile views
-        %p In the past 7 days:
-        %ul
-          - ((Date.today - 6).to_date..Date.today.to_date).to_a.reverse_each do |date|
-            %li
-              = date == Date.today ? "Today" : date.strftime("%A")
-              = ": #{@views_summary[date.to_s] || 0} views"
-    .dash-unit
-      %h4 Settings
-      %ul
-        %li= link_to "Update My Information", edit_user_registration_path
-        %li= link_to "Update looking for", '/'
+        - if @views_summary.present?
+          .dash-unit
+            %h4 Profile views
+            %p In the past 7 days:
+            %ul
+              - ((Date.today - 6).to_date..Date.today.to_date).to_a.reverse_each do |date|
+                %li
+                  = date == Date.today ? "Today" : date.strftime("%A")
+                  = ": #{@views_summary[date.to_s] || 0} views"
+        .dash-unit
+          %h4 Settings
+          %ul.console-list
+            %li= link_to "View Repo", user_path(current_user)
+            %li= link_to "Update Repo", edit_user_registration_path
