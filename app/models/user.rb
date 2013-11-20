@@ -58,8 +58,8 @@ class User < ActiveRecord::Base
     Event.flags.where(target_user_id: target_user_id, user_id: self.id).present?
   end
 
-  def pokes_received
-    User.joins(:event_creator).where("events.target_user_id = ? and events.event_type = 'poke'", self.id).select("users.id, users.username, event_type, events.created_at")
+  def pokes_received days_back=7
+    Event.pokes.where("target_user_id = ? AND created_at > ?", self.id, DateTime.now - days_back.days)
   end
 
   def profile_views days_back=7
@@ -71,12 +71,12 @@ class User < ActiveRecord::Base
   end
 
   def users_who_viewed_profile
-    User.joins(:event_creator).where("events.target_user_id = ? and events.event_type = 'view'", 1).select("users.id, users.username").uniq
+    User.joins(:event_creator).where("events.target_user_id = ? and events.event_type = 'view'", self.id).uniq
   end
 
   # DASHBOARD
   def news_items
-    [self.messages_received, self.pokes_received].flatten.sort_by(&:created_at)
+    [self.messages_received, self.pokes_received, self.profile_views].flatten.sort_by(&:created_at)
   end
 
   # CANCAN
