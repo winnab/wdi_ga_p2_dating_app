@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @new_message = Message.new(recipient_id: params[:id])
-    @new_message.sender_id = current_user.id || 0
+    @new_message.sender_id = current_user.id if user_signed_in?
 
     # Track view if current_user logged in & not viewing own profile
     Event.create(event_type: :view, user_id: current_user.id, target_user_id: @user.id) if (user_signed_in? && current_user.id != @user.id)
