@@ -41,6 +41,13 @@ class User < ActiveRecord::Base
     self.messages_received.pluck(:sender_id)  # Returns ids of users who've messaged this user
   end
 
+  def over_daily_message_limit?
+    if self.plan == 'Standard'
+      return true if self.messages_sent.where('created_at > ?', DateTime.now - 24.hours).count >= 3
+    end
+    false
+  end
+
   # EVENTS
   # event_type: view | star | poke | flag
   def get_starred_users

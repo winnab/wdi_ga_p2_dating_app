@@ -105,6 +105,11 @@ body {
   color:$grey_dark;
 }
 
+.nav a.highlight {
+  color:$grey_dark;
+  background:$secondary;
+}
+
 .dash-unit {
   background:$grey_dark;
   padding:10px;
@@ -226,4 +231,16 @@ body {
 
 .clear {
   clear:both;
+}
+
+.highlight {
+  background-color: $grey_light;
+  color: $grey_dark;
+  margin-right: 20%;
+  margin-top: 1em;
+  width: auto;
+  padding: 0.5em;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
 }

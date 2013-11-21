@@ -6,9 +6,14 @@ $(function() {
     $.get($this.attr('href'), function(response) {$this.replaceWith(response)})
   }
 
+  function promptSignup() {
+    window.flashAlert($('.alert-success'), 'Please sign up!');
+    $('.sign-up-link').addClass('highlight');
+  }
+
   $('#star-action, #flag-action, #poke-action').on('click', 'a', function(event) {
     event.preventDefault();
-    toggleUserAction(this);
+    ($(this).attr('data-signup-prompt') == 'true') ? promptSignup() : toggleUserAction(this);
   });
 
 
@@ -34,10 +39,15 @@ $(function() {
       $('#inline-compose-text').val('');
       hideInlineCompose();
       window.flashAlert($('.alert-success'), 'Your message has been sent.')
+    }).fail(function(data) {
+      window.flashAlert($('.alert-success'), data.responseText);
     })
   }
 
-  $('#message-action').on('click', 'button', showInlineCompose);
+  $('#message-action').on('click', 'button', function(event) {
+    ($(this).attr('data-signup-prompt') == 'true') ? promptSignup() : showInlineCompose();
+  });
+
   $('#inline-compose-close').on('click', hideInlineCompose);
   $('#inline-compose-send').on('click', function(event) {
     event.preventDefault();

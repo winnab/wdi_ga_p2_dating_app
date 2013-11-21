@@ -19,6 +19,8 @@ $(function() {
     $.post('/messages', formData, function(data) {
       $('#message_content').val('');
       $(data).hide().appendTo($('#message-thread')).slideDown();
+    }).fail(function(data) {
+      window.flashAlert($('.alert-success'), data.responseText);
     })
   }
 

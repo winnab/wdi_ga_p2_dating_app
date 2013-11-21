@@ -35,22 +35,26 @@
         %li= "#{quality.quality_type}: #{quality.value}"
 
 
-  - if user_signed_in? && @user.id != current_user.id
-    .col-md-2
+  .col-md-2
+    - unless user_signed_in? && @user.id == current_user.id # hide buttons from current user viewing self
+      - dummy = !user_signed_in? # show dummy buttons for guests
       #star-action.profile-btn
-        - if current_user.already_starred_user? @user.id
-          = render :partial => 'unstar_btn', locals: {:user_id => @user.id}
+        - if user_signed_in? && (current_user.already_starred_user? @user.id)
+          = render partial: 'unstar_btn', locals: {user_id: @user.id}
         - else
-          = render :partial => 'star_btn', locals: {:user_id => @user.id}
-      #message-action.profile-btn
-        = render :partial => 'message_btn', locals: {:user_id => @user.id}
-      #poke-action.profile-btn= render :partial => 'poke_btn', locals: {:user_id => @user.id}
-      #flag-action.profile-btn
-        - if current_user.already_flagged_user? @user.id
-          = render :partial => 'unflag_btn', locals: {:user_id => @user.id}
-        - else
-          = render :partial => 'flag_btn', locals: {:user_id => @user.id}
+          = render partial: 'star_btn', locals: {user_id: @user.id, dummy: dummy}
 
+      #message-action.profile-btn
+        = render partial: 'message_btn', locals: {user_id: @user.id, dummy: dummy}
+      #poke-action.profile-btn
+        = render partial: 'poke_btn', locals: {user_id: @user.id, dummy: dummy}
+
+      #flag-action.profile-btn
+        - if user_signed_in? && (current_user.already_flagged_user? @user.id)
+          = render partial: 'unflag_btn', locals: {user_id: @user.id}
+        - else
+          = render partial: 'flag_btn', locals: {user_id: @user.id, dummy: dummy}
+      
   #inline-message-compose
     .inner
       %i{:class =>"fam-cross", :id => 'inline-compose-close'}

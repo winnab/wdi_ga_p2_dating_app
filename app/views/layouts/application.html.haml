@@ -8,6 +8,8 @@
     = javascript_include_tag "application"
     %script{src: "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"}
     = csrf_meta_tags
+
+    = favicon_link_tag 'favicon.ico'
   %body
     %nav.nav
       - if user_signed_in?
@@ -20,7 +22,7 @@
           %li= link_to 'Exit',  destroy_user_session_path, method: :delete
       - else
         %ul
-          %li= link_to 'Sign Up', new_user_registration_path
+          %li= link_to 'Sign Up', new_user_registration_path, {:class => 'sign-up-link'}
           %li= link_to 'Sign In', new_user_session_path
           %li= link_to 'Search', search_path
       .clear

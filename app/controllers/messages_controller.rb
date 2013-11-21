@@ -15,6 +15,14 @@ class MessagesController < ApplicationController
   end
 
   def create
+    if current_user.over_daily_message_limit?
+      if request.xhr?
+        render :js => "Reached daily message limit. Please upgrade to premium." and return
+      else
+        redirect_to inbox_url, :notice => "Reached daily message limit. Please upgrade to premium." and return
+      end
+    end
+
     message = Message.create params[:message]
     if request.xhr?
       render :partial => 'message', locals: {:message => message}

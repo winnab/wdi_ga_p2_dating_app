@@ -1,3 +1,5 @@
-%a{:href => "/users/#{user_id}/star/set", :class => "btn btn-small btn-primary", :id => "star-user"}
-        %i{:class => "fam-award-star-add"}
-        %span Star user
+- user_id ||= false
+- dummy   ||= false
+%a{:href => ("/users/#{user_id}/star/set" unless dummy), :class => "btn btn-small btn-primary", :id => "star-user", :"data-signup-prompt" => ('true' if dummy)}
+  %i{:class => "fam-award-star-add"}
+  %span Star user
