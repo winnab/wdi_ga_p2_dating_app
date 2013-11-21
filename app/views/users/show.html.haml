@@ -30,6 +30,10 @@
 
   .col-md-5
     %h2 Qualities
+    - if @user.qualities.present?
+      - @user.qualities.each do |quality|
+        %li= "#{quality.quality_type}: #{quality.value}"
+
 
   - if user_signed_in? && @user.id != current_user.id
     .col-md-2

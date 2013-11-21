@@ -1,0 +1,143 @@
+.col-md-4
+  / batman v spiderman
+  .form-group 
+    .h4 If I had to be a superhero...             
+    = radio_button_tag(:"quality[superhero]", "Batman")
+    = label_tag(:"quality[superhero]", "Batman")
+    %br/
+    = radio_button_tag(:"quality[superhero]", "Spiderman")
+    = label_tag(:"quality[superhero]", "Spiderman")                
+  / os
+  .form-group
+    .h4 If were forced to use one OS forever and ever...              
+    = radio_button_tag(:"quality[os]", "Mac")
+    = label_tag(:"quality[os]", "Mac")
+    %br/
+    = radio_button_tag(:"quality[os]", "PC")
+    = label_tag(:"quality[os]", "PC")
+    %br/
+    = radio_button_tag(:"quality[os]", "Linux")
+    = label_tag(:"quality[os]", "Linux") 
+
+  / code comments
+  .form-group  
+    .h4 Code MUST be indented with...            
+    = radio_button_tag(:"quality[check_box_os]", "Commas")
+    = label_tag(:"quality[check_box_os]", "Commas")
+    %br/
+    = radio_button_tag(:"quality[check_box_os]", "Tabs")
+    = label_tag(:"quality[check_box_os]", "Tabs")
+
+  / mouse v trackpad
+  .form-group 
+    .h4 My preferred accessory is a...            
+    = radio_button_tag(:"quality[accessory]", "Mouse")
+    = label_tag(:"quality[accessory]", "Mouse")
+    %br/
+    = radio_button_tag(:"quality[accessory]", "Trackpad")
+    = label_tag(:"quality[accessory]", "Trackpad")
+
+  / DHH
+  .form-group 
+    .h4 DHH is...          
+    = radio_button_tag(:"quality[dhh]", "a god")
+    = label_tag(:"quality[dhh]", "a god")
+    %br/
+    = radio_button_tag(:"quality[dhh]", "the worst")
+    = label_tag(:"quality[dhh]", "the worst")
+
+  / sublime
+  .form-group 
+    .h4 Sublime text is...          
+    = radio_button_tag(:"quality[sublime]", "alright")
+    = label_tag(:"quality[sublime]", "alright")
+    %br/
+    = radio_button_tag(:"quality[sublime]", "the best text editor ever")
+    = label_tag(:"quality[sublime]", "the best text editor ever")
+    %br/
+    = radio_button_tag(:"quality[sublime]", "worst text editor ever")
+    = label_tag(:"quality[superhero]", "worst text editor ever")
+
+  / tablets
+  .form-group 
+    .h4 Tablets are...            
+    = radio_button_tag(:"quality[tablets]", "dumb giant phones")
+    = label_tag(:"quality[tablets]", "dumb giant phones")
+    %br/
+    = radio_button_tag(:"quality[tablets]", "the computers of the future")
+    = label_tag(:"quality[tablets]", "the computers of the future")
+
+  / tv
+  .form-group 
+    .h4 My preferred choice of TV show is...          
+    = radio_button_tag(:"quality[tv]", "Big Bang Theory")
+    = label_tag(:"quality[tv]", "Big Bang Theory")
+    %br/
+    = radio_button_tag(:"quality[tv]", "The IT Crowd")
+    = label_tag(:"quality[tv]", "The IT Crowd")
+
+  / mario v link
+  .form-group 
+    .h4 The Gameboy Hero...       
+    = radio_button_tag(:"quality[superhero]", "Mario")
+    = label_tag(:"quality[superhero]", "Mario")
+    %br/
+    = radio_button_tag(:"quality[superhero]", "Link")
+    = label_tag(:"quality[superhero]", "Link")  
+
+  /spike v angel
+  .form-group 
+    .h4 The Gameboy Hero...       
+    = radio_button_tag(:"quality[superhero]", "Team Angel")
+    = label_tag(:"quality[superhero]", "Team Angel")
+    %br/
+    = radio_button_tag(:"quality[superhero]", "Team Spike")
+    = label_tag(:"quality[superhero]", "Team Spike") 
+
+
+.col-md-4
+  / stack overflow url
+  .form-group
+    = label_tag(:"quality[stack_overflow]", "You can find me on Stack Overflow at: ", class: "clear-emphasis")
+    = url_field_tag(:"quality[stack_overflow]", "", class: "form-control", rows: 1)
+  / github url
+  .form-group
+    = label_tag(:"quality[github]", "You can find me on Github at: ", class: "clear-emphasis")
+    = url_field_tag(:"quality[github]", "", class: "form-control", rows: 1)
+  / twitter url
+  .form-group
+    = label_tag(:"quality[twitter]", "You can follow me on Twitter at: ", class: "clear-emphasis")
+    = url_field_tag(:"quality[twitter]", "", class: "form-control", rows: 1)
+  / best hack
+  .form-group
+    = label_tag(:"quality[best_hack]", "Best hack: ", class: "clear-emphasis")
+    = text_area_tag(:"quality[best_hack]", "", class: "form-control", rows: 2)
+  / error_time
+  .form-group
+    = label_tag(:"quality[error_time]", "The longest I've spent on a single error:", class: "clear-emphasis")
+    = text_field_tag(:"quality[error_time]", "", class: "form-control", rows: 2)
+  / youtube comment
+  .form-group
+    = label_tag(:"quality[argument]", "I totally pwned this guy in the comments section of a YouTube video. Check it out here: ", class: "clear-emphasis")
+    = text_area_tag(:"quality[argument]", "", class: "form-control", rows: 2)
+  / settlers
+  .form-group
+    = label_tag(:"quality[settlers]", "My favourite resource in Settlers of Catan is: ", class: "clear-emphasis")
+    = text_area_tag(:"quality[settlers]", "", class: "form-control", rows: 2)
+  / fantasy writer
+  .form-group
+    = label_tag(:"quality[fantasy_writer]", "My favourite fantasy writer is: ", class: "clear-emphasis")
+    = text_area_tag(:"quality[fantasy_writer]", "", class: "form-control", rows: 2)
+  / superpower
+  .form-group
+    = label_tag(:"quality[superpower]", "My superpower: ", class: "clear-emphasis")
+    = text_area_tag(:"quality[superpower]", "", class: "form-control", rows: 2)
+  / comic cons
+  .form-group
+    = label_tag(:"quality[comic_con]", "Number of comic-cons attended: ", class: "clear-emphasis")
+    = text_area_tag(:"quality[comic_con]", "", class: "form-control", rows: 2)
+  / energy drink
+  .form-group
+    = label_tag(:"quality[3am_drink]", "The best 3 a.m. energy drink is: ", class: "clear-emphasis")
+    = text_area_tag(:"quality[3am_drink]", "", class: "form-control", rows: 2)
+  / screen size
