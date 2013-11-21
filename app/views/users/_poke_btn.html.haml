@@ -1,3 +1,5 @@
-%a{:href => "/users/#{user_id}/poke/set", :class => "btn btn-small btn-primary", :id => "poke-user"}
+- user_id ||= false
+- dummy   ||= false
+%a{:href => ("/users/#{user_id}/poke/set" unless dummy), :class => "btn btn-small btn-primary", :id => "poke-user", :"data-signup-prompt" => ('true' if dummy)}
   %i{:class => "fam-tux"}
   %span Throw penguin

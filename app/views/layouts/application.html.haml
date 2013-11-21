@@ -22,7 +22,7 @@
           %li= link_to 'Exit',  destroy_user_session_path, method: :delete
       - else
         %ul
-          %li= link_to 'Sign Up', new_user_registration_path
+          %li= link_to 'Sign Up', new_user_registration_path, {:class => 'sign-up-link'}
           %li= link_to 'Sign In', new_user_session_path
           %li= link_to 'Search', search_path
       .clear

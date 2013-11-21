@@ -1,3 +1,5 @@
-%a{:href => "/users/#{user_id}/flag/set", :class => "btn btn-small btn-danger", :id => "flag-user"}
+- user_id ||= false
+- dummy   ||= false
+%a{:href => ("/users/#{user_id}/flag/set" unless dummy), :class => "btn btn-small btn-danger", :id => "flag-user", :"data-signup-prompt" => ('true' if dummy)}
   %i{:class => "fam-flag-red"}
   %span Flag user

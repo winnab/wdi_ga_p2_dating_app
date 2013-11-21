@@ -105,6 +105,11 @@ body {
   color:$grey_dark;
 }
 
+.nav a.highlight {
+  color:$grey_dark;
+  background:$secondary;
+}
+
 .dash-unit {
   background:$grey_dark;
   padding:10px;
