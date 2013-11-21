@@ -1,5 +1,5 @@
 WdiGaP2DatingApp::Application.routes.draw do
-  devise_for :users, 
+  devise_for :users,
   :controllers => { :registrations => 'users/registrations' }
   # careful! call devise_for once only and do it before resource users!
 
@@ -22,4 +22,8 @@ WdiGaP2DatingApp::Application.routes.draw do
 
   get   'search',             :to => "users#new_search"
   post  'search',             :to => "users#do_search",         :as => "do_search"
+
+  # unless Rails.application.config.consider_all_requests_local
+  match '*not_found', to: 'errors#error_404'
+  # end
 end
