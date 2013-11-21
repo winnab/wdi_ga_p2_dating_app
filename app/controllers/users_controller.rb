@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def do_search
+    exclude_user = current_user ? current_user.id : 0
     page   = params[:page] || 1
     @users = 
       User.where("(age BETWEEN ? AND ?) AND gender = ? AND location = ? AND id != ?",
@@ -28,13 +29,14 @@ class UsersController < ApplicationController
         params[:end_age], 
         params[:looking_for_gender], 
         params[:location],
-        current_user.id)
+        exclude_user)
       .paginate(page: page, per_page: 9)
   end
 
   def new_search
-    page   = params[:page] || 1
-    @users = User.where('id != ?', current_user.id).paginate(page: page, per_page: 9) # allow pagination of all users by default
+    exclude_user = current_user ? current_user.id : 0
+    page    = params[:page] || 1
+    @users  = User.where('id != ?', exclude_user).paginate(page: page, per_page: 9) # allow pagination of all users by default
   end
 
   def do_event
