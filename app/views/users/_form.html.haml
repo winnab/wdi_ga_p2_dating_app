@@ -1,5 +1,4 @@
 = form_tag "/search" do
-
   %b= label_tag "Looking for a:"
   = select_tag("looking_for_gender", options_for_select([['Female'], ['Male']]))
   \::
@@ -10,6 +9,6 @@
   \::
 
   = label_tag "location"
-  = select_tag("location", options_for_select(%w(London Birmingham Leeds Glasgow Sheffield Liverpool Manchester Bristol Cardiff Coventry Nottingham Leicester Newcastle Brighton Oxford Cambridge))
+  = select_tag("location", options_for_select(%w(London Birmingham Leeds Glasgow Sheffield Liverpool Manchester Bristol Cardiff Coventry Nottingham Leicester Newcastle Brighton Oxford Cambridge)))
 
   = submit_tag "Go", :class => "btn btn-primary"

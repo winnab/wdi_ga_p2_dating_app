@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
   end
 
   def show
@@ -22,17 +21,20 @@ class UsersController < ApplicationController
   end
 
   def do_search
-    @users_search = User.where("(age BETWEEN ? AND ?) AND gender = ? AND location = ?", params[:start_age], params[:end_age], params[:looking_for_gender], params[:location])
-
-    # @users = User.where("age BETWEEN ? AND ?", params[:start_age], params[:end_age])
-    # @users = User.where("gender = ?", params[:looking_for_gender])
-    # @users = User.where("location = ?", params[:location])
+    page   = params[:page] || 1
+    @users =
+      User.where("(age BETWEEN ? AND ?) AND gender = ? AND location = ? AND id != ?",
+        params[:start_age],
+        params[:end_age],
+        params[:looking_for_gender],
+        params[:location],
+        current_user.id)
+      .paginate(page: page, per_page: 9)
   end
 
   def new_search
-    # @users = User.all
-    @users = User.paginate(:page => params[:page], :per_page => 9)
-    @users -= [current_user]
+    page   = params[:page] || 1
+    @users = User.where('id != ?', current_user.id).paginate(page: page, per_page: 9) # allow pagination of all users by default
   end
 
   # PAGINATION back-up

@@ -29,8 +29,4 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [200, 200]
   end
 
-  version :gallery do
-    process :resize_to_fit => [400, 400]
-  end
-
 end
