@@ -11,15 +11,6 @@ WdiGaP2DatingApp::Application.routes.draw do
 
   root :to => "home#index" # req for devise config
 
-  # # for custom pages
-  # match '/404', :to => 'errors#not_found'
-  # match '/422', :to => 'errors#server_error'
-  # match '/500', :to => 'errors#server_error'
-
-  # unless Rails.application.config.consider_all_requests_local
-    match '*not_found', to: 'errors#error_404'
-  # end
-
   resources :messages, only: [:create, :destroy]
 
   get   'conversation/:id',   :to => "messages#conversation",  :as => "conversation"
@@ -31,4 +22,8 @@ WdiGaP2DatingApp::Application.routes.draw do
 
   get   'search',             :to => "users#new_search"
   post  'search',             :to => "users#do_search",         :as => "do_search"
+
+  # unless Rails.application.config.consider_all_requests_local
+  match '*not_found', to: 'errors#error_404'
+  # end
 end
