@@ -1,73 +1,56 @@
 .row
-  .col-md-4
-    .panel.panel-primary
-      .panel-heading
-        %h2.panel-title My Details
-      .panel-body
-        %p All fields are required.
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-          = devise_error_messages!
-          %form{role: "form"}
-            .fieldset            
-              .form-group
-                = f.label :username, class: "required"
-                = f.text_field :username, placeholder: "Username", class: "form-control", :autofocus => true
-              .form-group
-                = f.label :email, class: "required"
-                = f.email_field :email, placeholder: "Email Address", class: "form-control"
-              .form-group
-                = f.label :password, class: "password-hint"
-                = f.password_field :password, placeholder: "Password", class: "form-control"
-              .form-group
-                = f.label :password_confirmation, class: "required"
-                = f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control"
-              .form-group
-                = f.label :first_name, class: "required"
-                = f.text_field :first_name, placeholder: "First Name", class: "form-control"
-              .form-group
-                = f.label :last_name, class: "required"
-                = f.text_field :last_name, placeholder: "Last Name", class: "form-control"
-              .form-group
-                = f.label :plan, class: "required"
-                = select(:user, :plan, [['Standard'], ['Premium']])
-              .form-group
-                = f.label :avatar, "Upload a photo", class: "required"
-                = f.file_field :avatar  
-              .form-group
-                = f.label :gender, class: "clear-emphasis"
-                = select(:user, :gender, [['Female'], ['Male'], ['Rather Not Say']])
-              .form-group
-                = f.label :age, class: "clear-emphasis"
-                = f.number_field :age, placeholder: "Age", class: "form-control"
-              .form-group
-                = f.label :location, class: "clear-emphasis"
-                = f.text_field :location, placeholder: "Location", class: "form-control"
-              .form-group
-                = f.label :bio, "About me:", class: "clear-emphasis"
-                = f.text_area :bio, placeholder: "Tell us a bit about yourself...", class: "form-control", rows: 5
-              .form-group
-                = f.submit "Create Account", class: "btn btn-default form-control"
-
-  .col-md-4
-    .panel.panel-primary
-      .panel-heading
-        %h2.panel-title I'm looking for...
-      .panel-body
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-          = devise_error_messages!
-          %form{role: "form"}
-            .fieldset          
-              .form-group
-                = f.label :gender, class: "clear-emphasis"
-                = select(:user, :gender, [['Female'], ['Male'], ['Male or Female']])
-              .form-group
-                = f.label :age, class: "clear-emphasis"
-                = f.number_field :age, placeholder: "Age", class: "form-control"
-              .form-group
-                = f.label :location, class: "clear-emphasis"
-                = f.text_field :location, placeholder: "Location", class: "form-control"
-              .form-group
-                = f.label :bio, "I'm looking for:", class: "clear-emphasis"
-                = f.text_area :bio, placeholder: "My ideal ideal match...", class: "form-control", rows: 5
-              .form-group
-                = f.submit "Save My Preferences", class: "btn btn-default form-control"                
+  .panel.panel-primary
+    .panel-heading
+      %h2.panel-title My Details
+    .panel-body
+      %p All fields are required.
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        %form{role: "form"} 
+          .col-md-4            
+            .form-group
+              = f.label :username, class: "required"
+              = f.text_field :username, placeholder: "Username", class: "form-control", :autofocus => true
+            .form-group
+              = f.label :email, class: "required"
+              = f.email_field :email, placeholder: "Email Address", class: "form-control"
+            .form-group
+              = f.label :password, class: "password-hint"
+              = f.password_field :password, placeholder: "Password", class: "form-control"
+            .form-group
+              = f.label :password_confirmation, class: "required"
+              = f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control"
+            .form-group
+              = f.label :first_name, class: "required"
+              = f.text_field :first_name, placeholder: "First Name", class: "form-control"
+            .form-group
+              = f.label :last_name, class: "required"
+              = f.text_field :last_name, placeholder: "Last Name", class: "form-control"
+            .form-group
+              = f.label :plan, class: "required"
+              = select(:user, :plan, [['Standard'], ['Premium']])
+            .form-group
+              = f.label :avatar, "Upload a photo", class: "required"
+              = f.file_field :avatar        
+            .form-group
+              = f.label :gender, class: "clear-emphasis"
+              = select(:user, :gender, [['Female'], ['Male'], ['Male or Female']])
+            .form-group
+              = f.label :age, class: "clear-emphasis"
+              = f.number_field :age, placeholder: "Age", class: "form-control"
+            .form-group
+              = f.label :location, class: "clear-emphasis"
+              = select(:user, :location, (%w(London Birmingham Leeds Glasgow Sheffield Liverpool Manchester Bristol Cardiff Coventry Nottingham Leicester Newcastle Brighton Oxford Cambridge)))
+            /about me
+            .form-group
+              = f.label :bio, "About me:", class: "clear-emphasis"
+              = f.text_area :bio, placeholder: "Tell us a bit about yourself...", class: "form-control", rows: 5
+            / looking for overview
+            .form-group
+              = label_tag(:"quality[looking_for_overview]", "I'm looking for", class: "clear-emphasis")
+              = text_area_tag(:"quality[looking_for_overview]", "You're perfect if...", class: "form-control", rows: 2)                  
+          
+          = render "form"
+            
+          .form-group
+            = f.submit "Create Account", class: "btn btn-default form-control"
