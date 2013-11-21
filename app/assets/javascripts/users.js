@@ -34,6 +34,8 @@ $(function() {
       $('#inline-compose-text').val('');
       hideInlineCompose();
       window.flashAlert($('.alert-success'), 'Your message has been sent.')
+    }).fail(function(data) {
+      window.flashAlert($('.alert-success'), data.responseText);
     })
   }
 
