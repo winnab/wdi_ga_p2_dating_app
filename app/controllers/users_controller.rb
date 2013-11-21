@@ -37,13 +37,8 @@ class UsersController < ApplicationController
     exclude_user = current_user ? current_user.id : 0
     page    = params[:page] || 1
     @users  = User.where('id != ?', exclude_user).paginate(page: page, per_page: 9) # allow pagination of all users by default
+    render 'do_search'
   end
-
-  # PAGINATION back-up
-  # page = params[:page] || 1
-  # per_page = 9
-
-  # @users = User.paginate(page: page, per_page: per_page).order('created_at').all
 
   def do_event
     # Whitelist action & event_type params
