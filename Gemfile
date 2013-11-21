@@ -17,6 +17,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'jquery-rails'
 
 gem 'factory_girl_rails'
+gem 'faker' 
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
