@@ -19,7 +19,6 @@ $(function() {
     slide: function(event, ui) {
       $("#start_age").val(ui.values[0]);
       $("#end_age").val(ui.values[1]);
-
       $("#range").html(ui.values[0] + " - " + ui.values[1]);
     }
   });

@@ -1,14 +1,25 @@
 = form_tag "/search" do
-  %b= label_tag "Looking for a:"
-  = select_tag("looking_for_gender", options_for_select([['Female'], ['Male']]))
-  \::
 
-  = label_tag "age"
-  = select_tag("start_age", options_for_select((18..70).to_a))
-  = select_tag("end_age", options_for_select((18..70).to_a))
-  \::
+  .fieldset
+    %b= label_tag "I am a:"
+    = select_tag("gender", options_for_select([['Male'], ['Female']]))
 
-  = label_tag "location"
-  = select_tag("location", options_for_select(%w(London Birmingham Leeds Glasgow Sheffield Liverpool Manchester Bristol Cardiff Coventry Nottingham Leicester Newcastle Brighton Oxford Cambridge)))
+    %p
+    %b= label_tag "Looking for a:"
+    = select_tag("looking_for_gender", options_for_select([['Female'], ['Male']]))
 
-  = submit_tag "Go", :class => "btn btn-primary"
+    %p
+      %label{for: :amount} Age range:
+      %span#range{style: "border: 0; color: #f6931f; font-weight: bold;"}
+    #slider-range
+    = hidden_field_tag :start_age, 18
+    = hidden_field_tag :end_age, 35
+
+    %p
+    = label_tag "location"
+    = select_tag("location", options_for_select([ ["London"], ["Birmingham"], ["Leeds"], ["Glasgow"], ["Sheffield"], ["Liverpool"], ["Manchester"], ["Bristol"], ["Cardiff"], ["Coventry"], ["Nottingham"], ["Leicester"], ["Newcastle"], ["Brighton"], ["Oxford"], ["Cambridge"] ]) )
+
+
+
+    %p
+    = submit_tag "Continue", :class => "btn btn-primary"

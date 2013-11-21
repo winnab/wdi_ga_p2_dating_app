@@ -4,28 +4,4 @@
     %h1 puts "Hello world"
 
   #home_form
-    = form_tag "/search" do
-
-      .fieldset
-        %b= label_tag "I am a:"
-        = select_tag("gender", options_for_select([['Male'], ['Female']]))
-
-        %p
-        %b= label_tag "Looking for a:"
-        = select_tag("looking_for_gender", options_for_select([['Female'], ['Male']]))
-
-        %p
-          %label{for: :amount} Age range:
-          %span#range{style: "border: 0; color: #f6931f; font-weight: bold;"}
-        #slider-range
-          = hidden_field_tag :start_age
-          = hidden_field_tag :end_age
-
-        %p
-        = label_tag "location"
-        = select_tag("location", options_for_select([ ["London"], ["Birmingham"], ["Leeds"], ["Glasgow"], ["Sheffield"], ["Liverpool"], ["Manchester"], ["Bristol"], ["Cardiff"], ["Coventry"], ["Nottingham"], ["Leicester"], ["Newcastle"], ["Brighton"], ["Oxford"], ["Cambridge"] ]) )
-
-
-
-        %p
-        = submit_tag "Continue", :class => "btn btn-primary"
+    = render '/users/form'
