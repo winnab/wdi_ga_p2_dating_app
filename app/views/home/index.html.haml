@@ -15,9 +15,11 @@
         = select_tag("looking_for_gender", options_for_select([['Female'], ['Male']]))
 
         %p
-        = label_tag "age"
-        = select_tag("start_age", options_for_select((18..70).to_a))
-        = select_tag("end_age", options_for_select((18..70).to_a))
+          %label{for: :amount} Age range:
+          %span#range{style: "border: 0; color: #f6931f; font-weight: bold;"}
+        #slider-range
+          = hidden_field_tag :start_age
+          = hidden_field_tag :end_age
 
         %p
         = label_tag "location"

@@ -115,6 +115,17 @@ body {
   height:50px;
 }
 
+// HOMEPAGE
+
+#slider-range {
+  width: 30%;
+
+  .ui-widget-header {
+    background: none;
+    background-color: #428bca;
+  }
+}
+
 /* Newsfeed */
 .newsfeed-item {
   padding:15px 0;

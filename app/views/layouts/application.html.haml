@@ -3,7 +3,10 @@
   %head
     %title Hacker <3
     = stylesheet_link_tag    "application", :media => "all"
+    %link{rel:"stylesheet", href: "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"}
+
     = javascript_include_tag "application"
+    %script{src: "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"}
     = csrf_meta_tags
   %body
     %nav.nav
@@ -23,7 +26,7 @@
       .clear
     #alerts
       .alert.alert-success.notice{style:'display:none;'}= notice if notice.present?
-      .alert.alert-danger{style:'display:none;'}= alert if alert.present?    
+      .alert.alert-danger{style:'display:none;'}= alert if alert.present?
     #wrap
       #window-bar
         #window-buttons
