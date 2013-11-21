@@ -7,6 +7,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     puts "hi there"
   end
 
+  def create
+    super
+    
+  end
+
 
 
 
