@@ -1,5 +1,5 @@
 WdiGaP2DatingApp::Application.routes.draw do
-  devise_for :users, 
+  devise_for :users,
   :controllers => { :registrations => 'users/registrations' }
   # careful! call devise_for once only and do it before resource users!
 
@@ -10,6 +10,15 @@ WdiGaP2DatingApp::Application.routes.draw do
   end
 
   root :to => "home#index" # req for devise config
+
+  # # for custom pages
+  # match '/404', :to => 'errors#not_found'
+  # match '/422', :to => 'errors#server_error'
+  # match '/500', :to => 'errors#server_error'
+
+  # unless Rails.application.config.consider_all_requests_local
+    match '*not_found', to: 'errors#error_404'
+  # end
 
   resources :messages, only: [:create, :destroy]
 
