@@ -5,26 +5,27 @@
     = render "form"
   %br
 
-  .row
+  .row  
     - @users.each do |user|
       .col-md-4
-        = link_to user.first_name, user_path(user)
-        %br
-        = image_tag user.avatar.search
-        %br
-        = user.username
-        \,
-        = user.age
-        \,
-        = user.location
-        %br
+        %h3.search.username
+          = link_to user.username, user_path(user)
+        .search
+          = image_tag user.avatar.search
+        .search.para
+          Age:
+          = user.age
+        .search.para.location
+          City:
+          = user.location
 
-  = will_paginate @users
+
+  .row
+    = will_paginate @users
 
   - unless user_signed_in?
-    .row
-      .col-md-12
-        %h3
-          Why don't you...
-          = link_to "Sign up", new_user_registration_path
-          ?
+    .row.sign-up-prompt
+      %h3 
+        Why don't you...
+        = link_to "Sign up", new_user_registration_path
+        ?
