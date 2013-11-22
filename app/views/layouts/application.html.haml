@@ -23,9 +23,9 @@
           %li= link_to 'Exit',  destroy_user_session_path, method: :delete
       - else
         %ul
-          %li= link_to '.create()', new_user_registration_path, {:class => 'sign-up-link'}
-          %li= link_to '@session.initialize', new_user_session_path
-          %li= link_to '@user.find', search_path
+          %li= link_to 'Sign Up', new_user_registration_path, {:class => 'sign-up-link'}
+          %li= link_to 'Sign In', new_user_session_path
+          %li= link_to 'Search', search_path
       .clear
     #alerts
       .alert.alert-success.notice{style:'display:none;'}= notice if notice.present?

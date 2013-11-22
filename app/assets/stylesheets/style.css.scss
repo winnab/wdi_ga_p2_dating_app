@@ -1,9 +1,12 @@
-$primary    : #00D6DD;
-$secondary  : #D4FF00;
-$pop        : #FF3FB4;
-$grey_dark  : #303233;
-$grey_mid   : #66757F;
-$grey_light : #ABC4CA;
+$primary-light      : #00D6DD;
+$primary            : #00AFB5;
+$secondary          : #ACCF00;
+$secondary-light    : #D4FF00;
+$pop                : #D13494;
+$pop-light          : #FF3FB4;
+$grey_dark          : #303233;
+$grey_mid           : #66757F;
+$grey_light         : #ABC4CA;
 
 $heading : 'Droid Sans Mono', 'Helvetica', 'Arial', sans-serif;
 $heading-weight : 'Normal 400';
@@ -148,10 +151,12 @@ label {
 
 #slider-range {
   width: 30%;
+  border: none;
 
   .ui-widget-header {
     background: none;
     background-color: #428bca;
+
   }
 }
 
@@ -247,6 +252,7 @@ label {
 /***** buttons *************************************/
 .btn-primary{
   background-color: $primary;
+  border: 0px;
 }
 
 /***** Utility *************************************/
