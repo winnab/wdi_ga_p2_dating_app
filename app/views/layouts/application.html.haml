@@ -7,6 +7,7 @@
 
     = javascript_include_tag "application"
     %script{src: "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"}
+    %link{href:"http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono|Roboto:400,500,100,700,900", rel:"stylesheet", type:"text/css"}
     = csrf_meta_tags
 
     = favicon_link_tag 'favicon.ico'
@@ -22,9 +23,9 @@
           %li= link_to 'Exit',  destroy_user_session_path, method: :delete
       - else
         %ul
-          %li= link_to 'Sign Up', new_user_registration_path, {:class => 'sign-up-link'}
-          %li= link_to 'Sign In', new_user_session_path
-          %li= link_to 'Search', search_path
+          %li= link_to '.create()', new_user_registration_path, {:class => 'sign-up-link'}
+          %li= link_to '@session.initialize', new_user_session_path
+          %li= link_to '@user.find', search_path
       .clear
     #alerts
       .alert.alert-success.notice{style:'display:none;'}= notice if notice.present?
