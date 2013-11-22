@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         params[:looking_for_gender],
         params[:location],
         exclude_user)
-      .paginate(page: page, per_page: 9)
+      .paginate(page: page, per_page: 21)
   end
 
   def new_search
