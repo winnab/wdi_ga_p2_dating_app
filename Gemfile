@@ -17,7 +17,9 @@ gem 'will_paginate', '~> 3.0'
 gem 'jquery-rails'
 
 gem 'factory_girl_rails'
-gem 'faker' 
+gem 'faker'
+
+gem 'high_voltage'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -33,7 +35,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'faker'   
+  gem 'faker'
 end
 
 
