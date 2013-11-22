@@ -5,7 +5,7 @@ $secondary-light    : #D4FF00;
 $pop                : #D13494;
 $pop-light          : #FF3FB4;
 $grey_dark          : #303233;
-$grey_mid           : #66757F;
+$grey_mid           : #212323;
 $grey_light         : #ABC4CA;
 
 $heading : 'Droid Sans Mono', 'Helvetica', 'Arial', sans-serif;
@@ -23,6 +23,7 @@ $main-weight: normal;
 /***** Core layout *************************************/
 
 body {
+  color:$grey_mid;
   background:$grey_dark;
   font-family: $main;
   font-weight: $main-weight;
@@ -57,7 +58,7 @@ body {
 
 #content {
   padding:20px;
-  color:$grey_light;
+  color:$grey_mid;
 }
 
 #wrap {
@@ -160,6 +161,26 @@ label {
   }
 }
 
+#form > .form-group > label {
+  color: $grey_dark;
+}
+
+/***** Panels *************************************/
+.panel-primary{
+  border-color: $primary;
+}
+.panel-primary > .panel-heading{
+  background-color: $primary-light;
+  border-color: $primary;
+}
+.panel-primary > .panel-heading {
+  background-color: $primary-light;
+  border-color: $primary;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-weight: normal;
+}
+
 /***** Newsfeed *************************************/
 .newsfeed-item {
   padding:15px 0;
@@ -173,6 +194,10 @@ label {
 
 .profile-btn {
   margin:0 0 15px 0;
+}
+
+.container{
+  padding: 40px;
 }
 
 /***** Console-style list *************************************/
