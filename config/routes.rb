@@ -24,8 +24,8 @@ WdiGaP2DatingApp::Application.routes.draw do
   post  'search',             :to => "users#do_search",         :as => "do_search"
 
   get 'pages/about',          :to => "pages#about"
-
+  
   # unless Rails.application.config.consider_all_requests_local
-  match '*not_found', to: 'errors#error_404'
+  # match '*not_found', to: 'errors#error_404'
   # end
 end
