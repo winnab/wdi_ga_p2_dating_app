@@ -192,9 +192,18 @@ label {
   font-size: 11px
 }
 
+#profile-btns {
+  margin-bottom:20px;
+  text-align:right;
+}
+
 .profile-btn {
   display:inline-block;
-  margin:0 0 15px 20px;
+  margin:0 0 5px 20px;
+}
+
+#profile-btns button.btn, #profile-btns a.btn {
+  width:162px;
 }
 
 .container{

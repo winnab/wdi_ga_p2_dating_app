@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def new_search
     exclude_user = current_user ? current_user.id : 0
     page    = params[:page] || 1
-    @users  = User.where('id != ?', exclude_user).paginate(page: page, per_page: 9) # allow pagination of all users by default
+    @users  = User.where('id != ?', exclude_user).paginate(page: page, per_page: 21) # allow pagination of all users by default
     render 'do_search'
   end
 
