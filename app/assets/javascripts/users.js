@@ -55,4 +55,12 @@ $(function() {
     inlineComposeSend(data);
   });
 
+
+  // show qualities on profile page
+  if (window.UserQualities) {
+    _(window.UserQualities).each(function(quality) {
+      $("#" + quality.value).addClass('selected-quality');
+    })
+  }
+
 })

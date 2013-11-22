@@ -228,6 +228,16 @@ body {
   text-align: center;
 }
 
+.this-that > img {
+  opacity:0.7;
+}
+
+.this-that .selected-quality {
+  outline:2px solid $primary;
+  opacity:1;
+}
+
+
 /* Utility */
 .left {
   float:left;
