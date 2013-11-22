@@ -18,7 +18,7 @@ FactoryGirl.define do
     age                     { rand(18..60) }
     tagline                 { Faker::Lorem.sentences(2) }
     bio                     { Faker::Lorem.paragraph(2) }
-    location                { %w(London Birmingham Leeds Glasgow Sheffield Liverpool Manchester Bristol Cardiff Coventry Nottingham Leicester Newcastle Brighton Oxford Cambridge).sample }
+    location                { %w(London Birmingham Leeds Glasgow Sheffield Liverpool Manchester Bristol Cardiff Nottingham Leicester Newcastle Brighton Oxford Cambridge).sample }
     plan                    { %w(Standard Premium).sample }
 
     factory :female do
