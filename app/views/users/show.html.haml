@@ -1,8 +1,28 @@
 .row
   .col-md-12
     %h1= @user.username
+
+  - unless user_signed_in? && @user.id == current_user.id # hide buttons from current user viewing self
+    - dummy = !user_signed_in? # show dummy buttons for guests
+    #star-action.profile-btn
+      - if user_signed_in? && (current_user.already_starred_user? @user.id)
+        = render partial: 'unstar_btn', locals: {user_id: @user.id}
+      - else
+        = render partial: 'star_btn', locals: {user_id: @user.id, dummy: dummy}
+
+    #message-action.profile-btn
+      = render partial: 'message_btn', locals: {user_id: @user.id, dummy: dummy}
+    #poke-action.profile-btn
+      = render partial: 'poke_btn', locals: {user_id: @user.id, dummy: dummy}
+
+    #flag-action.profile-btn
+      - if user_signed_in? && (current_user.already_flagged_user? @user.id)
+        = render partial: 'unflag_btn', locals: {user_id: @user.id}
+      - else
+        = render partial: 'flag_btn', locals: {user_id: @user.id, dummy: dummy}
+
 .row
-  .col-md-5
+  .col-md-4
     %p
       %b= @user.first_name
       %b= @user.last_name
@@ -28,33 +48,92 @@
       = @user.bio
     %br
 
-  .col-md-5
+  .col-md-8
     %h2 Qualities
-    - if @user.qualities.present?
-      - @user.qualities.each do |quality|
-        %li= "#{quality.quality_type}: #{quality.value}"
+    .row
+      .col-md-6
+        .form-group 
+          .h4 If I had to be a superhero...
+          .this-that
+            = image_tag 'batman.png', {:id => 'batman'}
+          .this-that 
+            = image_tag 'spiderman.png', {:id => 'spiderman'}
+                            
+        / DHH
+        .form-group 
+          .h4 DHH is... a God? Or the Worst?
+          .this-that    
+            = image_tag 'a_god.png', {id: 'a_god'}
+          .this-that
+            = image_tag 'the_worst.png', {id: 'the_worst'}
 
+        / tablets
+        .form-group 
+          .h4 Tablets are... dumb giant phones? Or computers of the future?
+          .this-that 
+            = image_tag 'dumb_giant_phones.png', {id: 'dumb_giant_phones'}
+          .this-that
+            = image_tag 'the_computers_of_the_future.png', {id: 'the_computers_of_the_future'}
+    
+        / mario v link
+        .form-group 
+          .h4 The Gameboy Hero...  
+          .this-that
+            = image_tag 'mario.png', {id: 'mario'}
+          .this-that
+            = image_tag 'link.png', {id: 'link'}
+           
+        /spike v angel
+        .form-group 
+          .h4 Team Angel or Team Spike?
+          .this-that       
+            = image_tag 'team_angel.png', {id: 'team_angel'}
+          .this-that
+            = image_tag 'team_spike.png', {id: 'team_spike'}
 
-  .col-md-2
-    - unless user_signed_in? && @user.id == current_user.id # hide buttons from current user viewing self
-      - dummy = !user_signed_in? # show dummy buttons for guests
-      #star-action.profile-btn
-        - if user_signed_in? && (current_user.already_starred_user? @user.id)
-          = render partial: 'unstar_btn', locals: {user_id: @user.id}
-        - else
-          = render partial: 'star_btn', locals: {user_id: @user.id, dummy: dummy}
+      .col-md-6
+        / os
+        .form-group
+          .h4 If were forced to use one OS forever and ever...  
+          .this-that
+            = image_tag 'apple.png', {id: 'apple'}
+          .this-that
+            = image_tag 'windows.png', {id: 'windows'}
+          .this-that
+            = image_tag 'linux.png', {id: 'linux'}
 
-      #message-action.profile-btn
-        = render partial: 'message_btn', locals: {user_id: @user.id, dummy: dummy}
-      #poke-action.profile-btn
-        = render partial: 'poke_btn', locals: {user_id: @user.id, dummy: dummy}
+        /xbox vs playstation
+        .form-group 
+          .h4 Xbox or PlayStation?
+          .this-that       
+            = image_tag 'xbox.png', {id: 'xbox'}
+          .this-that
+            = image_tag 'playstation.png', {id: 'playstation'}
 
-      #flag-action.profile-btn
-        - if user_signed_in? && (current_user.already_flagged_user? @user.id)
-          = render partial: 'unflag_btn', locals: {user_id: @user.id}
-        - else
-          = render partial: 'flag_btn', locals: {user_id: @user.id, dummy: dummy}
-      
+        / tv
+        .form-group 
+          .h4 My preferred choice of TV show is...
+          .this-that 
+            = image_tag 'big_bang_theory.png', {id: 'big_bang_theory'}
+          .this-that
+            = image_tag 'the_it_crowd.png', {id: 'the_it_crowd'}
+
+        /trekkie or jedi
+        .form-group 
+          .h4 Trekkie or Jedi?
+          .this-that       
+            = image_tag 'trekkie.png', {id: 'trekkie'}
+          .this-that
+            = image_tag 'jedi.png', {id: 'jedi'}
+
+        /android or iphone
+        .form-group 
+          .h4 Android or iPhone?
+          .this-that       
+            = image_tag 'android.png', {id: 'android'}
+          .this-that
+            = image_tag 'iphone.png', {id: 'iphone'}
+          
   #inline-message-compose
     .inner
       %i{:class =>"fam-cross", :id => 'inline-compose-close'}
@@ -65,3 +144,13 @@
         .form-group
           = f.text_area :content, {:id => 'inline-compose-text', :class => 'form-control', :rows => 5}
         = f.submit 'Send message', {:class => 'btn btn-primary', :id => "inline-compose-send"}
+
+  / - if @user.qualities.present?
+  /   - @user.qualities.each do |quality|
+  /     %script
+  /     %li= "#{quality.quality_type}: #{quality.value}"
+
+- if @user.qualities.present?
+  - json = @user.qualities.where('quality_type != ?', 'looking_for_overview').to_json
+  :javascript
+    window.UserQualities = #{json}

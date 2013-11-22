@@ -3,19 +3,19 @@
 en:
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed."
+      confirmed: "Cool beans! Your account has been initiated."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
-      already_authenticated: "You are already signed in."
+      already_authenticated: "Check yo'self...you're already signed in!"
       inactive: "Your account is not activated yet."
-      invalid: "Invalid email or password."
-      locked: "Your account is locked."
-      last_attempt: "You have one more attempt before your account will be locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      invalid: "Pro tip: Enter your email or password correctly."
+      locked: "Bazinga! Your account has been locked."
+      last_attempt: "You have one life left before your account is locked."
+      not_found_in_database: "Pro tip: sign up before you can sign in."
+      timeout: "Just like your social life, your session expired. Please sign in again to continue."
+      unauthenticated: "Pro tip: sign in or sign up before continuing."
+      unconfirmed: "Pro tip: Confirm your account before continuing."
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
@@ -34,7 +34,7 @@ en:
       updated_not_active: "Your password was changed successfully."
     users:
       user:
-        destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+        destroyed: "Like the Death Star, your account was successfully destroyed. We hope to see you again soon."
         signed_up: "Welcome! You have signed up successfully."
         signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
         signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
@@ -42,8 +42,8 @@ en:
         update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
         updated: "You updated your account successfully."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Session created! (signed in successfully)"
+      signed_out: "Session destroyed! (signed out successfully)."
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."

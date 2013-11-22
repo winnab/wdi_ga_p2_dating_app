@@ -23,7 +23,7 @@ $main-weight: normal;
 /***** Core layout *************************************/
 
 body {
-  color:$grey_mid;
+
   background:$grey_dark;
   font-family: $main;
   font-weight: $main-weight;
@@ -58,7 +58,7 @@ body {
 
 #content {
   padding:20px;
-  color:$grey_mid;
+  color:fff;
 }
 
 #wrap {
@@ -193,7 +193,8 @@ label {
 }
 
 .profile-btn {
-  margin:0 0 15px 0;
+  display:inline-block;
+  margin:0 0 15px 20px;
 }
 
 .container{
@@ -287,6 +288,25 @@ label {
   background-color: #00D6DD;
 }
 
+/* Qualities */
+.this-that {
+  display:inline-block;
+  width:100px;
+  margin:10px 0 0 10px;
+  text-align: center;
+}
+
+.this-that > img {
+  opacity:0.7;
+}
+
+.this-that .selected-quality {
+  outline:2px solid $primary;
+  opacity:1;
+}
+
+
+/* Utility */
 .left {
   float:left;
 }
@@ -299,7 +319,7 @@ label {
   clear:both;
 }
 
-.highlight {
+.highlight-pun {
   background-color: $grey_light;
   color: $grey_dark;
   margin-right: 20%;
@@ -337,4 +357,7 @@ label {
   color: $grey_mid;
 }
 
+#about-us li {
+  float: right;
+}
 
