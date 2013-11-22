@@ -361,6 +361,22 @@ label {
   float: right;
 }
 
+/**** OLI HOTFIX ****/
+
 .user-form {
   color:#000 !important;
+}
+
+#alerts {
+  position:fixed;
+  width:100%;
+  bottom:0;
+  left:0;
+  text-align:center;
+  z-index:200;
+  display:block;
+}
+
+#alerts .alert {
+  margin:0;
 }
